@@ -1,0 +1,2514 @@
+{
+    "station": {
+        "id": "008507000",
+        "name": "Bern",
+        "score": 101,
+        "coordinate": {
+            "type": "WGS84",
+            "x": 46.948825,
+            "y": 7.439122
+        },
+        "distance": null
+    },
+    "stationboard": [
+        {
+            "stop": {
+                "station": {
+                    "id": "8507000",
+                    "name": "Bern",
+                    "score": null,
+                    "coordinate": {
+                        "type": "WGS84",
+                        "x": 46.948825,
+                        "y": 7.439122
+                    },
+                    "distance": null
+                },
+                "arrival": "2017-01-09T21:28:00+0100",
+                "arrivalTimestamp": 1483993680,
+                "departure": null,
+                "departureTimestamp": null,
+                "delay": -1427,
+                "platform": "5",
+                "prognosis": {
+                    "platform": "4",
+                    "arrival": "2017-01-08T21:41:00+0100",
+                    "departure": null,
+                    "capacity1st": -1,
+                    "capacity2nd": -1
+                },
+                "realtimeAvailability": null,
+                "location": {
+                    "id": "8507000",
+                    "name": "Bern",
+                    "score": null,
+                    "coordinate": {
+                        "type": "WGS84",
+                        "x": 46.948825,
+                        "y": 7.439122
+                    },
+                    "distance": null
+                }
+            },
+            "name": "IC 734",
+            "category": "IC",
+            "subcategory": "IC",
+            "categoryCode": 1,
+            "number": "734",
+            "operator": "SBB",
+            "to": "St. Gallen",
+            "passList": [
+                {
+                    "station": {
+                        "id": "8506302",
+                        "name": "St. Gallen",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.423177,
+                            "y": 9.369879
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T19:25:00+0100",
+                    "departureTimestamp": 1483986300,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8506302",
+                        "name": "St. Gallen",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.423177,
+                            "y": 9.369879
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8506000",
+                        "name": "Winterthur",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.500332,
+                            "y": 8.723797
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T20:03:00+0100",
+                    "departureTimestamp": 1483988580,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8506000",
+                        "name": "Winterthur",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.500332,
+                            "y": 8.723797
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8503016",
+                        "name": "Zürich Flughafen",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.450379,
+                            "y": 8.562387
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T20:18:00+0100",
+                    "departureTimestamp": 1483989480,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8503016",
+                        "name": "Zürich Flughafen",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.450379,
+                            "y": 8.562387
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8503000",
+                        "name": "Zürich HB",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.378177,
+                            "y": 8.540193
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T20:32:00+0100",
+                    "departureTimestamp": 1483990320,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8503000",
+                        "name": "Zürich HB",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.378177,
+                            "y": 8.540193
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8507000",
+                        "name": "Bern",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.948825,
+                            "y": 7.439122
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T21:28:00+0100",
+                    "departureTimestamp": 1483993680,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8507000",
+                        "name": "Bern",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.948825,
+                            "y": 7.439122
+                        },
+                        "distance": null
+                    }
+                }
+            ],
+            "capacity1st": null,
+            "capacity2nd": null
+        },
+        {
+            "stop": {
+                "station": {
+                    "id": "8507000",
+                    "name": "Bern",
+                    "score": null,
+                    "coordinate": {
+                        "type": "WGS84",
+                        "x": 46.948825,
+                        "y": 7.439122
+                    },
+                    "distance": null
+                },
+                "arrival": "2017-01-08T21:52:00+0100",
+                "arrivalTimestamp": 1483908720,
+                "departure": null,
+                "departureTimestamp": null,
+                "delay": null,
+                "platform": "7",
+                "prognosis": {
+                    "platform": "7",
+                    "arrival": null,
+                    "departure": null,
+                    "capacity1st": -1,
+                    "capacity2nd": -1
+                },
+                "realtimeAvailability": null,
+                "location": {
+                    "id": "8507000",
+                    "name": "Bern",
+                    "score": null,
+                    "coordinate": {
+                        "type": "WGS84",
+                        "x": 46.948825,
+                        "y": 7.439122
+                    },
+                    "distance": null
+                }
+            },
+            "name": "ICE 336",
+            "category": "ICE",
+            "subcategory": "ICE",
+            "categoryCode": 0,
+            "number": "336",
+            "operator": "SBB",
+            "to": "Interlaken Ost",
+            "passList": [
+                {
+                    "station": {
+                        "id": "8507492",
+                        "name": "Interlaken Ost",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.690502,
+                            "y": 7.869004
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T21:00:00+0100",
+                    "departureTimestamp": 1483992000,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8507492",
+                        "name": "Interlaken Ost",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.690502,
+                            "y": 7.869004
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8507493",
+                        "name": "Interlaken West",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.682628,
+                            "y": 7.851439
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T21:05:00+0100",
+                    "departureTimestamp": 1483992300,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8507493",
+                        "name": "Interlaken West",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.682628,
+                            "y": 7.851439
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8507483",
+                        "name": "Spiez",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.686394,
+                            "y": 7.680096
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T21:22:00+0100",
+                    "departureTimestamp": 1483993320,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8507483",
+                        "name": "Spiez",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.686394,
+                            "y": 7.680096
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8507100",
+                        "name": "Thun",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.754856,
+                            "y": 7.629594
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-08T21:33:00+0100",
+                    "departureTimestamp": 1483907580,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8507100",
+                        "name": "Thun",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.754856,
+                            "y": 7.629594
+                        },
+                        "distance": null
+                    }
+                }
+            ],
+            "capacity1st": null,
+            "capacity2nd": null
+        },
+        {
+            "stop": {
+                "station": {
+                    "id": "8507000",
+                    "name": "Bern",
+                    "score": null,
+                    "coordinate": {
+                        "type": "WGS84",
+                        "x": 46.948825,
+                        "y": 7.439122
+                    },
+                    "distance": null
+                },
+                "arrival": "2017-01-08T21:56:00+0100",
+                "arrivalTimestamp": 1483908960,
+                "departure": null,
+                "departureTimestamp": null,
+                "delay": null,
+                "platform": "4",
+                "prognosis": {
+                    "platform": "4",
+                    "arrival": null,
+                    "departure": null,
+                    "capacity1st": -1,
+                    "capacity2nd": -1
+                },
+                "realtimeAvailability": null,
+                "location": {
+                    "id": "8507000",
+                    "name": "Bern",
+                    "score": null,
+                    "coordinate": {
+                        "type": "WGS84",
+                        "x": 46.948825,
+                        "y": 7.439122
+                    },
+                    "distance": null
+                }
+            },
+            "name": "IC 987",
+            "category": "IC",
+            "subcategory": "IC",
+            "categoryCode": 1,
+            "number": "987",
+            "operator": "SBB",
+            "to": "Basel SBB",
+            "passList": [
+                {
+                    "station": {
+                        "id": "8500010",
+                        "name": "Basel SBB",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.547408,
+                            "y": 7.589548
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T20:59:00+0100",
+                    "departureTimestamp": 1483991940,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8500010",
+                        "name": "Basel SBB",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.547408,
+                            "y": 7.589548
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8500023",
+                        "name": "Liestal",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.484457,
+                            "y": 7.731352
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T21:09:00+0100",
+                    "departureTimestamp": 1483992540,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8500023",
+                        "name": "Liestal",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.484457,
+                            "y": 7.731352
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8500218",
+                        "name": "Olten",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.351929,
+                            "y": 7.907685
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T21:29:00+0100",
+                    "departureTimestamp": 1483993740,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8500218",
+                        "name": "Olten",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.351929,
+                            "y": 7.907685
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8507000",
+                        "name": "Bern",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.948825,
+                            "y": 7.439122
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-08T21:56:00+0100",
+                    "departureTimestamp": 1483908960,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8507000",
+                        "name": "Bern",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.948825,
+                            "y": 7.439122
+                        },
+                        "distance": null
+                    }
+                }
+            ],
+            "capacity1st": null,
+            "capacity2nd": null
+        },
+        {
+            "stop": {
+                "station": {
+                    "id": "8507000",
+                    "name": "Bern",
+                    "score": null,
+                    "coordinate": {
+                        "type": "WGS84",
+                        "x": 46.948825,
+                        "y": 7.439122
+                    },
+                    "distance": null
+                },
+                "arrival": "2017-01-08T21:56:00+0100",
+                "arrivalTimestamp": 1483908960,
+                "departure": null,
+                "departureTimestamp": null,
+                "delay": null,
+                "platform": "5",
+                "prognosis": {
+                    "platform": "5",
+                    "arrival": null,
+                    "departure": null,
+                    "capacity1st": -1,
+                    "capacity2nd": -1
+                },
+                "realtimeAvailability": null,
+                "location": {
+                    "id": "8507000",
+                    "name": "Bern",
+                    "score": null,
+                    "coordinate": {
+                        "type": "WGS84",
+                        "x": 46.948825,
+                        "y": 7.439122
+                    },
+                    "distance": null
+                }
+            },
+            "name": "IR 2537",
+            "category": "IR",
+            "subcategory": "IR",
+            "categoryCode": 2,
+            "number": "2537",
+            "operator": "SBB",
+            "to": "Genève-Aéroport",
+            "passList": [
+                {
+                    "station": {
+                        "id": "8501026",
+                        "name": "Genève-Aéroport",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.232529,
+                            "y": 6.111982
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T20:02:00+0100",
+                    "departureTimestamp": 1483988520,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8501026",
+                        "name": "Genève-Aéroport",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.232529,
+                            "y": 6.111982
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8501008",
+                        "name": "Genève",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.2102,
+                            "y": 6.142455
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T20:12:00+0100",
+                    "departureTimestamp": 1483989120,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8501008",
+                        "name": "Genève",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.2102,
+                            "y": 6.142455
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8501120",
+                        "name": "Lausanne",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.516777,
+                            "y": 6.629095
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T20:50:00+0100",
+                    "departureTimestamp": 1483991400,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8501120",
+                        "name": "Lausanne",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.516777,
+                            "y": 6.629095
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8504100",
+                        "name": "Fribourg/Freiburg",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.803272,
+                            "y": 7.151027
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-08T21:34:00+0100",
+                    "departureTimestamp": 1483907640,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8504100",
+                        "name": "Fribourg/Freiburg",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.803272,
+                            "y": 7.151027
+                        },
+                        "distance": null
+                    }
+                }
+            ],
+            "capacity1st": null,
+            "capacity2nd": null
+        },
+        {
+            "stop": {
+                "station": {
+                    "id": "8507000",
+                    "name": "Bern",
+                    "score": null,
+                    "coordinate": {
+                        "type": "WGS84",
+                        "x": 46.948825,
+                        "y": 7.439122
+                    },
+                    "distance": null
+                },
+                "arrival": "2017-01-08T21:58:00+0100",
+                "arrivalTimestamp": 1483909080,
+                "departure": null,
+                "departureTimestamp": null,
+                "delay": 6,
+                "platform": "8",
+                "prognosis": {
+                    "platform": "8",
+                    "arrival": "2017-01-08T22:04:00+0100",
+                    "departure": null,
+                    "capacity1st": -1,
+                    "capacity2nd": -1
+                },
+                "realtimeAvailability": null,
+                "location": {
+                    "id": "8507000",
+                    "name": "Bern",
+                    "score": null,
+                    "coordinate": {
+                        "type": "WGS84",
+                        "x": 46.948825,
+                        "y": 7.439122
+                    },
+                    "distance": null
+                }
+            },
+            "name": "IC 834",
+            "category": "IC",
+            "subcategory": "IC",
+            "categoryCode": 1,
+            "number": "834",
+            "operator": "SBB",
+            "to": "Romanshorn",
+            "passList": [
+                {
+                    "station": {
+                        "id": "8506121",
+                        "name": "Romanshorn",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.56553,
+                            "y": 9.379363
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T19:40:00+0100",
+                    "departureTimestamp": 1483987200,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8506121",
+                        "name": "Romanshorn",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.56553,
+                            "y": 9.379363
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8506109",
+                        "name": "Amriswil",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.550446,
+                            "y": 9.302217
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T19:46:00+0100",
+                    "departureTimestamp": 1483987560,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8506109",
+                        "name": "Amriswil",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.550446,
+                            "y": 9.302217
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8506105",
+                        "name": "Weinfelden",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.566223,
+                            "y": 9.106342
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T19:58:00+0100",
+                    "departureTimestamp": 1483988280,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8506105",
+                        "name": "Weinfelden",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.566223,
+                            "y": 9.106342
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8506100",
+                        "name": "Frauenfeld",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.558159,
+                            "y": 8.896534
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T20:12:00+0100",
+                    "departureTimestamp": 1483989120,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8506100",
+                        "name": "Frauenfeld",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.558159,
+                            "y": 8.896534
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8506000",
+                        "name": "Winterthur",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.500332,
+                            "y": 8.723797
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T20:25:00+0100",
+                    "departureTimestamp": 1483989900,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8506000",
+                        "name": "Winterthur",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.500332,
+                            "y": 8.723797
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8503016",
+                        "name": "Zürich Flughafen",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.450379,
+                            "y": 8.562387
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T20:40:00+0100",
+                    "departureTimestamp": 1483990800,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8503016",
+                        "name": "Zürich Flughafen",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.450379,
+                            "y": 8.562387
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8503000",
+                        "name": "Zürich HB",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.378177,
+                            "y": 8.540193
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T21:02:00+0100",
+                    "departureTimestamp": 1483992120,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8503000",
+                        "name": "Zürich HB",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.378177,
+                            "y": 8.540193
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8507000",
+                        "name": "Bern",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.948825,
+                            "y": 7.439122
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-08T21:58:00+0100",
+                    "departureTimestamp": 1483909080,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8507000",
+                        "name": "Bern",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.948825,
+                            "y": 7.439122
+                        },
+                        "distance": null
+                    }
+                }
+            ],
+            "capacity1st": null,
+            "capacity2nd": null
+        },
+        {
+            "stop": {
+                "station": {
+                    "id": "8507000",
+                    "name": "Bern",
+                    "score": null,
+                    "coordinate": {
+                        "type": "WGS84",
+                        "x": 46.948825,
+                        "y": 7.439122
+                    },
+                    "distance": null
+                },
+                "arrival": "2017-01-08T22:00:00+0100",
+                "arrivalTimestamp": 1483909200,
+                "departure": null,
+                "departureTimestamp": null,
+                "delay": null,
+                "platform": "3",
+                "prognosis": {
+                    "platform": "3",
+                    "arrival": null,
+                    "departure": null,
+                    "capacity1st": -1,
+                    "capacity2nd": -1
+                },
+                "realtimeAvailability": null,
+                "location": {
+                    "id": "8507000",
+                    "name": "Bern",
+                    "score": null,
+                    "coordinate": {
+                        "type": "WGS84",
+                        "x": 46.948825,
+                        "y": 7.439122
+                    },
+                    "distance": null
+                }
+            },
+            "name": "IR 2538",
+            "category": "IR",
+            "subcategory": "IR",
+            "categoryCode": 2,
+            "number": "2538",
+            "operator": "SBB",
+            "to": "Luzern",
+            "passList": [
+                {
+                    "station": {
+                        "id": "8505000",
+                        "name": "Luzern",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.05017,
+                            "y": 8.310168
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T21:00:00+0100",
+                    "departureTimestamp": 1483992000,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8505000",
+                        "name": "Luzern",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.05017,
+                            "y": 8.310168
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8502007",
+                        "name": "Sursee",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.170787,
+                            "y": 8.097879
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T21:18:00+0100",
+                    "departureTimestamp": 1483993080,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8502007",
+                        "name": "Sursee",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.170787,
+                            "y": 8.097879
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8502001",
+                        "name": "Zofingen",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.288042,
+                            "y": 7.943093
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T21:32:00+0100",
+                    "departureTimestamp": 1483993920,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8502001",
+                        "name": "Zofingen",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.288042,
+                            "y": 7.943093
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8507000",
+                        "name": "Bern",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.948825,
+                            "y": 7.439122
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-08T22:00:00+0100",
+                    "departureTimestamp": 1483909200,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8507000",
+                        "name": "Bern",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.948825,
+                            "y": 7.439122
+                        },
+                        "distance": null
+                    }
+                }
+            ],
+            "capacity1st": null,
+            "capacity2nd": null
+        },
+        {
+            "stop": {
+                "station": {
+                    "id": "8507000",
+                    "name": "Bern",
+                    "score": null,
+                    "coordinate": {
+                        "type": "WGS84",
+                        "x": 46.948825,
+                        "y": 7.439122
+                    },
+                    "distance": null
+                },
+                "arrival": "2017-01-08T22:23:00+0100",
+                "arrivalTimestamp": 1483910580,
+                "departure": null,
+                "departureTimestamp": null,
+                "delay": null,
+                "platform": "2",
+                "prognosis": {
+                    "platform": "2",
+                    "arrival": null,
+                    "departure": null,
+                    "capacity1st": -1,
+                    "capacity2nd": -1
+                },
+                "realtimeAvailability": null,
+                "location": {
+                    "id": "8507000",
+                    "name": "Bern",
+                    "score": null,
+                    "coordinate": {
+                        "type": "WGS84",
+                        "x": 46.948825,
+                        "y": 7.439122
+                    },
+                    "distance": null
+                }
+            },
+            "name": "IC 1088",
+            "category": "IC",
+            "subcategory": "IC",
+            "categoryCode": 1,
+            "number": "1088",
+            "operator": "SBB",
+            "to": "Brig",
+            "passList": [
+                {
+                    "station": {
+                        "id": "8501609",
+                        "name": "Brig",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.319419,
+                            "y": 7.988093
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T21:20:00+0100",
+                    "departureTimestamp": 1483993200,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8501609",
+                        "name": "Brig",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.319419,
+                            "y": 7.988093
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8501605",
+                        "name": "Visp",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.294024,
+                            "y": 7.881454
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T21:28:00+0100",
+                    "departureTimestamp": 1483993680,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8501605",
+                        "name": "Visp",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.294024,
+                            "y": 7.881454
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8507483",
+                        "name": "Spiez",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.686394,
+                            "y": 7.680096
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-08T21:54:00+0100",
+                    "departureTimestamp": 1483908840,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8507483",
+                        "name": "Spiez",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.686394,
+                            "y": 7.680096
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8507000",
+                        "name": "Bern",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.948825,
+                            "y": 7.439122
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-08T22:23:00+0100",
+                    "departureTimestamp": 1483910580,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8507000",
+                        "name": "Bern",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.948825,
+                            "y": 7.439122
+                        },
+                        "distance": null
+                    }
+                }
+            ],
+            "capacity1st": null,
+            "capacity2nd": null
+        },
+        {
+            "stop": {
+                "station": {
+                    "id": "8507000",
+                    "name": "Bern",
+                    "score": null,
+                    "coordinate": {
+                        "type": "WGS84",
+                        "x": 46.948825,
+                        "y": 7.439122
+                    },
+                    "distance": null
+                },
+                "arrival": "2017-01-08T22:24:00+0100",
+                "arrivalTimestamp": 1483910640,
+                "departure": null,
+                "departureTimestamp": null,
+                "delay": null,
+                "platform": "5",
+                "prognosis": {
+                    "platform": "5",
+                    "arrival": null,
+                    "departure": null,
+                    "capacity1st": -1,
+                    "capacity2nd": -1
+                },
+                "realtimeAvailability": null,
+                "location": {
+                    "id": "8507000",
+                    "name": "Bern",
+                    "score": null,
+                    "coordinate": {
+                        "type": "WGS84",
+                        "x": 46.948825,
+                        "y": 7.439122
+                    },
+                    "distance": null
+                }
+            },
+            "name": "IC 1091",
+            "category": "IC",
+            "subcategory": "IC",
+            "categoryCode": 1,
+            "number": "1091",
+            "operator": "SBB",
+            "to": "Basel SBB",
+            "passList": [
+                {
+                    "station": {
+                        "id": "8500010",
+                        "name": "Basel SBB",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.547408,
+                            "y": 7.589548
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T21:31:00+0100",
+                    "departureTimestamp": 1483993860,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8500010",
+                        "name": "Basel SBB",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.547408,
+                            "y": 7.589548
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8500218",
+                        "name": "Olten",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.351929,
+                            "y": 7.907685
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-08T21:57:00+0100",
+                    "departureTimestamp": 1483909020,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8500218",
+                        "name": "Olten",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.351929,
+                            "y": 7.907685
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8507000",
+                        "name": "Bern",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.948825,
+                            "y": 7.439122
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-08T22:24:00+0100",
+                    "departureTimestamp": 1483910640,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8507000",
+                        "name": "Bern",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.948825,
+                            "y": 7.439122
+                        },
+                        "distance": null
+                    }
+                }
+            ],
+            "capacity1st": null,
+            "capacity2nd": null
+        },
+        {
+            "stop": {
+                "station": {
+                    "id": "8507000",
+                    "name": "Bern",
+                    "score": null,
+                    "coordinate": {
+                        "type": "WGS84",
+                        "x": 46.948825,
+                        "y": 7.439122
+                    },
+                    "distance": null
+                },
+                "arrival": "2017-01-08T22:26:00+0100",
+                "arrivalTimestamp": 1483910760,
+                "departure": null,
+                "departureTimestamp": null,
+                "delay": null,
+                "platform": "10",
+                "prognosis": {
+                    "platform": "10",
+                    "arrival": null,
+                    "departure": null,
+                    "capacity1st": -1,
+                    "capacity2nd": -1
+                },
+                "realtimeAvailability": null,
+                "location": {
+                    "id": "8507000",
+                    "name": "Bern",
+                    "score": null,
+                    "coordinate": {
+                        "type": "WGS84",
+                        "x": 46.948825,
+                        "y": 7.439122
+                    },
+                    "distance": null
+                }
+            },
+            "name": "IC 737",
+            "category": "IC",
+            "subcategory": "IC",
+            "categoryCode": 1,
+            "number": "737",
+            "operator": "SBB",
+            "to": "Genève-Aéroport",
+            "passList": [
+                {
+                    "station": {
+                        "id": "8501026",
+                        "name": "Genève-Aéroport",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.232529,
+                            "y": 6.111982
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T20:32:00+0100",
+                    "departureTimestamp": 1483990320,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8501026",
+                        "name": "Genève-Aéroport",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.232529,
+                            "y": 6.111982
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8501008",
+                        "name": "Genève",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.2102,
+                            "y": 6.142455
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T20:42:00+0100",
+                    "departureTimestamp": 1483990920,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8501008",
+                        "name": "Genève",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.2102,
+                            "y": 6.142455
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8501120",
+                        "name": "Lausanne",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.516777,
+                            "y": 6.629095
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T21:20:00+0100",
+                    "departureTimestamp": 1483993200,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8501120",
+                        "name": "Lausanne",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.516777,
+                            "y": 6.629095
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8504100",
+                        "name": "Fribourg/Freiburg",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.803272,
+                            "y": 7.151027
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-08T22:04:00+0100",
+                    "departureTimestamp": 1483909440,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8504100",
+                        "name": "Fribourg/Freiburg",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.803272,
+                            "y": 7.151027
+                        },
+                        "distance": null
+                    }
+                }
+            ],
+            "capacity1st": null,
+            "capacity2nd": null
+        },
+        {
+            "stop": {
+                "station": {
+                    "id": "8507000",
+                    "name": "Bern",
+                    "score": null,
+                    "coordinate": {
+                        "type": "WGS84",
+                        "x": 46.948825,
+                        "y": 7.439122
+                    },
+                    "distance": null
+                },
+                "arrival": "2017-01-08T22:26:00+0100",
+                "arrivalTimestamp": 1483910760,
+                "departure": null,
+                "departureTimestamp": null,
+                "delay": null,
+                "platform": "8",
+                "prognosis": {
+                    "platform": "8",
+                    "arrival": null,
+                    "departure": null,
+                    "capacity1st": -1,
+                    "capacity2nd": -1
+                },
+                "realtimeAvailability": null,
+                "location": {
+                    "id": "8507000",
+                    "name": "Bern",
+                    "score": null,
+                    "coordinate": {
+                        "type": "WGS84",
+                        "x": 46.948825,
+                        "y": 7.439122
+                    },
+                    "distance": null
+                }
+            },
+            "name": "IR 2188",
+            "category": "IR",
+            "subcategory": "IR",
+            "categoryCode": 2,
+            "number": "2188",
+            "operator": "SBB",
+            "to": "Zürich HB",
+            "passList": [
+                {
+                    "station": {
+                        "id": "8503000",
+                        "name": "Zürich HB",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.378177,
+                            "y": 8.540193
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T21:06:00+0100",
+                    "departureTimestamp": 1483992360,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8503000",
+                        "name": "Zürich HB",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.378177,
+                            "y": 8.540193
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8503504",
+                        "name": "Baden",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.47642,
+                            "y": 8.307696
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T21:22:00+0100",
+                    "departureTimestamp": 1483993320,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8503504",
+                        "name": "Baden",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.47642,
+                            "y": 8.307696
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8500309",
+                        "name": "Brugg AG",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.480852,
+                            "y": 8.208823
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-09T21:32:00+0100",
+                    "departureTimestamp": 1483993920,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8500309",
+                        "name": "Brugg AG",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.480852,
+                            "y": 8.208823
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8502113",
+                        "name": "Aarau",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.391355,
+                            "y": 8.051251
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-08T21:46:00+0100",
+                    "departureTimestamp": 1483908360,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8502113",
+                        "name": "Aarau",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.391355,
+                            "y": 8.051251
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8500218",
+                        "name": "Olten",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.351929,
+                            "y": 7.907685
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-08T21:59:00+0100",
+                    "departureTimestamp": 1483909140,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8500218",
+                        "name": "Olten",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.351929,
+                            "y": 7.907685
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8507000",
+                        "name": "Bern",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.948825,
+                            "y": 7.439122
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-08T22:26:00+0100",
+                    "departureTimestamp": 1483910760,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8507000",
+                        "name": "Bern",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.948825,
+                            "y": 7.439122
+                        },
+                        "distance": null
+                    }
+                }
+            ],
+            "capacity1st": null,
+            "capacity2nd": null
+        },
+        {
+            "stop": {
+                "station": {
+                    "id": "8507000",
+                    "name": "Bern",
+                    "score": null,
+                    "coordinate": {
+                        "type": "WGS84",
+                        "x": 46.948825,
+                        "y": 7.439122
+                    },
+                    "distance": null
+                },
+                "arrival": "2017-01-08T22:26:00+0100",
+                "arrivalTimestamp": 1483910760,
+                "departure": null,
+                "departureTimestamp": null,
+                "delay": null,
+                "platform": "4",
+                "prognosis": {
+                    "platform": "4",
+                    "arrival": null,
+                    "departure": null,
+                    "capacity1st": -1,
+                    "capacity2nd": -1
+                },
+                "realtimeAvailability": null,
+                "location": {
+                    "id": "8507000",
+                    "name": "Bern",
+                    "score": null,
+                    "coordinate": {
+                        "type": "WGS84",
+                        "x": 46.948825,
+                        "y": 7.439122
+                    },
+                    "distance": null
+                }
+            },
+            "name": "IR 2386",
+            "category": "IR",
+            "subcategory": "IR",
+            "categoryCode": 2,
+            "number": "2386",
+            "operator": "SBB",
+            "to": "Olten",
+            "passList": [
+                {
+                    "station": {
+                        "id": "8500218",
+                        "name": "Olten",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.351929,
+                            "y": 7.907685
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-08T21:36:00+0100",
+                    "departureTimestamp": 1483907760,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8500218",
+                        "name": "Olten",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.351929,
+                            "y": 7.907685
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8508100",
+                        "name": "Langenthal",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.217297,
+                            "y": 7.784712
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-08T21:49:00+0100",
+                    "departureTimestamp": 1483908540,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8508100",
+                        "name": "Langenthal",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.217297,
+                            "y": 7.784712
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8508008",
+                        "name": "Herzogenbuchsee",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.188082,
+                            "y": 7.700942
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-08T21:54:00+0100",
+                    "departureTimestamp": 1483908840,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8508008",
+                        "name": "Herzogenbuchsee",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.188082,
+                            "y": 7.700942
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8508006",
+                        "name": "Wynigen",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.105166,
+                            "y": 7.663493
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-08T22:02:00+0100",
+                    "departureTimestamp": 1483909320,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8508006",
+                        "name": "Wynigen",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 47.105166,
+                            "y": 7.663493
+                        },
+                        "distance": null
+                    }
+                },
+                {
+                    "station": {
+                        "id": "8507000",
+                        "name": "Bern",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.948825,
+                            "y": 7.439122
+                        },
+                        "distance": null
+                    },
+                    "arrival": null,
+                    "arrivalTimestamp": null,
+                    "departure": "2017-01-08T22:26:00+0100",
+                    "departureTimestamp": 1483910760,
+                    "delay": null,
+                    "platform": "",
+                    "prognosis": {
+                        "platform": null,
+                        "arrival": null,
+                        "departure": null,
+                        "capacity1st": null,
+                        "capacity2nd": null
+                    },
+                    "realtimeAvailability": null,
+                    "location": {
+                        "id": "8507000",
+                        "name": "Bern",
+                        "score": null,
+                        "coordinate": {
+                            "type": "WGS84",
+                            "x": 46.948825,
+                            "y": 7.439122
+                        },
+                        "distance": null
+                    }
+                }
+            ],
+            "capacity1st": null,
+            "capacity2nd": null
+        }
+    ]
+}

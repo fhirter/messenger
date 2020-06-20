@@ -1,0 +1,4 @@
+var station = {
+    code: "",
+    name: "",
+}

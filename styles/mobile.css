@@ -1,0 +1,61 @@
+@media screen and (max-device-width : 480px) {
+    body {
+        font-size: 0.7em;
+    }
+
+    .stationtable {
+        margin:  0 0 0 0 ;
+        width: 100%;
+    }
+
+    .stationtable td {
+
+        border: solid thin #dddddd;
+        padding: 20px 5px;
+    }
+
+    .passlist {
+        display: none;
+    }
+
+    .type {
+        display: none;
+    }
+
+    .lock {
+        display: none;
+    }
+
+    #config {
+        padding: 0px;
+    }
+
+    #config fieldset {
+        margin: 0;
+    }
+
+    #config label {
+        margin: 0px;
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        box-sizing: border-box;
+        vertical-align: middle;
+        text-align: center;
+        background-color: #dfdfdf;
+    }
+
+    #config input:checked + label {
+        background-color: white;
+    }
+
+    #config input {
+        display: none;
+    }
+
+    #countdown {
+        /*display: none;*/
+    }
+
+
+}

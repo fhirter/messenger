@@ -1,0 +1,194 @@
+#countdown {
+	width: 50px;
+	height: 50px;
+	display: inline-block;
+
+	background-size: contain;
+	background-repeat: no-repeat;
+	font-size: 1.5em;
+	padding-top: 10px;
+	text-align: center;
+	cursor: pointer;
+    margin: 5px;
+}
+
+.counting {
+	background-image: url('../images/reload.png');
+}
+
+.loading {
+	background-image: url('../images/sanduhr.png');
+}
+	
+	
+body {
+	font-family: sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    margin-bottom: 10px;
+}
+
+#version {
+	font-style: italic;
+}
+
+.platform {
+	font-weight: bold;
+	width: 2em;
+}
+
+.name {
+	font-style: italic;
+}
+
+
+.type {
+	width: 5em;
+}
+
+.to,.from  {
+	width: 8em;
+}
+
+.arrival_time {
+	font-weight: bold;
+	text-align: left;
+    width: 4em;
+}
+
+.departure_time {
+	font-weight: bold;
+	text-align: left;
+    width: 4em;
+}
+
+.passlist {
+	/*width: calc( 100% - (2em + 5em + 2*8em + 2*4em ));*/
+	width: 30em;
+}
+
+.lock {
+	width: 2em;
+}
+
+.stationtable {
+	border-collapse: collapse;
+	width: calc(100% - 40px);
+	border: solid thin #dddddd;
+	margin: 20px;
+	margin-top: 50px;
+}
+
+.stationtable th {
+	text-align: left;
+	padding: 10px 20px 10px 10px;
+}
+
+
+.stationtable td {
+	border-left: solid thin #dddddd;
+	border-right: solid thin #dddddd;
+	padding: 10px;
+	vertical-align: top;
+}
+
+
+.stationtable tbody tr:nth-child(odd){
+	background: rgba(0,0,0,0.05);
+}
+
+
+.stationtable tbody tr:nth-child(odd) .departure {
+	background: rgba(247, 254, 46, 1);
+
+}
+
+.stationtable tbody tr:nth-child(even) .departure {
+	background: rgba(247, 254, 46, 0.5);
+}
+
+.stationtable tbody tr:hover {
+	outline: 1px solid black;
+}
+
+
+
+
+.delay {
+	color: red;
+}
+
+.early {
+    color: forestgreen;
+}
+
+.cancelled {
+	text-decoration: line-through;
+}
+
+#show_menu {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 50px;
+	height: 50px;
+	/*background-color: black;*/
+	background-image: url("../images/conf.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	cursor: pointer;
+}
+#tint {
+    width: 100%;
+    height: 100%;
+}
+
+#config {
+	/*height: 90px;*/
+	width: 200px;
+	padding: 20px;
+	position: absolute;
+	top: 70px;
+    right: 20px;
+	background-color: white;
+	display: none;
+
+	box-shadow: 2px 2px 10px #888888;
+}
+
+#alert {
+	position: absolute;
+	top: 10px;
+	left: 200px;
+	display: none;
+	height: 50px;
+	background-image: url("../images/alert.png");
+	background-repeat: no-repeat;
+}
+
+#alert span {
+	font-style: italic;
+	display: inline-block;
+	margin-left: 70px;
+}
+
+label {
+	width: 130px;
+	display: inline-block;
+	margin-bottom: 5px;
+}
+
+#transportations {
+	width: 200px;
+	float: left;
+	margin-right: 30px;
+	border: none;
+	padding: 0;
+}
+
+#version {
+	margin-left: 5px;
+}

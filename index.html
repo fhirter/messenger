@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="styles/style.css" />
+		<link rel="stylesheet" type="text/css" href="styles/mobile.css" />
+
+		<script src="language.object.js" defer="defer"></script>
+		<script src="stationBoard.js" defer="defer"></script>
+		<script src="data.object.js" defer="defer"></script>
+		<script src="script.js" defer="defer"></script>
+
+		<meta charset="UTF-8" />
+		<meta name="author" content="Fabian Hirter, fabian@berghirt.ch" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+		<title>Messenger</title>
+	</head>
+
+	<body>
+    <header>
+        <span id="countdown">0</span>
+        <div id="alert">
+            <span></span>
+
+        </div>
+        <div id="show_menu"></div>
+    </header>
+
+	<main>
+	<form id="config">
+		<fieldset id="transportations">
+			<input type="checkbox" value="Eurocity" id="EC"/><label for="EC">Eurocity</label><br />
+			<input type="checkbox" value="ICE" id="ICE"/><label for="ICE">ICE</label><br />
+			<input type="checkbox" value="Intercity" id="IC"/><label for="IC">Intercity</label><br />
+			<input type="checkbox" value="InterRegio"  id="IR"/><label for="IR">InterRegio</label><br />
+			<input type="checkbox" value="RegioExpress" id="RE"/><label for="RE">RegioExpress</label><br />
+			<input type="checkbox" value="S-Bahn" id="S"/><label for="S">S-Bahn</label><br />
+		</fieldset>
+		<!--<span class="label">Station:</span><input type="text" id="station"><br />-->
+
+        <select id="language">
+            <option id="de-CH" value="de-CH"></option>
+            <option id="fr-CH" value="fr-CH"></option>
+            <option id="it-CH" value="it-CH"></option>
+        </select>
+
+	</form>
+
+
+	<form>
+		<table id="arrivals" class="stationtable">
+			<colgroup class="arrival">
+				<col />
+				<col />
+				<col />
+				<col />
+				<col />
+			</colgroup>
+			<colgroup>
+				<col />
+				<col />
+				<col />
+				<col />
+			</colgroup>
+			<thead>
+				<tr>
+					<th>#</th>
+					<th id="type" class="type"></th>
+					<th id="from"></th>
+					<th id="fromPasslist" class="passlist"></th>
+					<th id="arrivalTime"></th>
+					<th id="departureTime"></th>
+					<th id="toPasslist" class="passlist"></th>
+					<th id="to"></th>
+					<th id="lock" class="lock"></th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</form>
+	<p id="version">berghirt.ch/messenger v0.4.3</p>
+	</main>
+	</body>
+</html>
