@@ -11,6 +11,8 @@ let data = {
 	config: {},
 
     url: "https://api.opentransportdata.swiss/trias",
+	requestString: '<?xml version="1.0" encoding="UTF-8"?> <Trias version="1.1" xmlns="http://www.vdv.de/trias" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> <ServiceRequest> <siri:RequestTimestamp>2016-06-27T13:34:00</siri:RequestTimestamp> <siri:RequestorRef>EPSa</siri:RequestorRef> <RequestPayload> <StopEventRequest> <Location> <LocationRef> <StopPointRef></StopPointRef> </LocationRef> <DepArrTime> </DepArrTime> </Location> <Params> <NumberOfResults></NumberOfResults> <StopEventType></StopEventType> <IncludePreviousCalls>true</IncludePreviousCalls> <IncludeOnwardCalls>true</IncludeOnwardCalls> <IncludeRealtimeData>true</IncludeRealtimeData> </Params> </StopEventRequest> </RequestPayload> </ServiceRequest> </Trias>',
+
 	apiKey: "",
 
 	trains: [],						// Array of train objects, each item holds a train arriving and/or leaving at the selected station
@@ -40,129 +42,82 @@ let data = {
 
 	    this.config = config;
     },
+
 	/**
 	 * Genereate request and load data from api
 	 * Arrival and departure data gets loaded simultaniously, when both has been loaded parse() gets called
-	 * @param callback - callback function to be called when load is complete
-	 * @param context - this context for callback function
 	 *
 	 */
-	load: function (callback, context) {
-		const that = this;
-		let flag = 0;
-
+	load: async function () {
 		if(this.apiKey.length === 0) {
 			console.log("No API Key specified!")
 			return false;
 		}
 
-		let requestString = '<?xml version="1.0" encoding="UTF-8"?> <Trias version="1.1" xmlns="http://www.vdv.de/trias" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> <ServiceRequest> <siri:RequestTimestamp>2016-06-27T13:34:00</siri:RequestTimestamp> <siri:RequestorRef>EPSa</siri:RequestorRef> <RequestPayload> <StopEventRequest> <Location> <LocationRef> <StopPointRef></StopPointRef> </LocationRef> <DepArrTime> </DepArrTime> </Location> <Params> <NumberOfResults></NumberOfResults> <StopEventType></StopEventType> <IncludePreviousCalls>true</IncludePreviousCalls> <IncludeOnwardCalls>true</IncludeOnwardCalls> <IncludeRealtimeData>true</IncludeRealtimeData> </Params> </StopEventRequest> </RequestPayload> </ServiceRequest> </Trias>';
+		let arrivalsPromise = this.loadData("arrival");
+		let departurePromise = this.loadData("departure");
+
+		let results = await Promise.allSettled([arrivalsPromise, departurePromise]);  // synchronize
+
+		let trains = this.merge(results[0].value, results[1].value);
+
+		trains = trains.filter(this.checkDepartureArrivalTimes);       // filter out trains which left the station
+		trains = trains.filter(this.checkType.bind(this));     // filter by train types
+
+		this.trains = trains;
+    },
+
+	loadData: async function (type) {
+		let that = this;
+
 		let parser = new DOMParser();
-		let requestArr, requestDep, xhrArr,xhrDep;
 
 		// build arrivals request
-        requestArr = parser.parseFromString(requestString, "text/xml");
-        requestArr.getElementsByTagName("StopPointRef")[0].innerHTML = that.config.station;
-        requestArr.getElementsByTagName("StopEventType")[0].innerHTML = "arrival";
-        requestArr.getElementsByTagName("NumberOfResults")[0].innerHTML = that.config.limit;
+		let request = parser.parseFromString(that.requestString, "text/xml");
+		request.getElementsByTagName("StopPointRef")[0].innerHTML = that.config.station;
+		request.getElementsByTagName("StopEventType")[0].innerHTML = type;
+		request.getElementsByTagName("NumberOfResults")[0].innerHTML = that.config.limit;
 
-        // set time of request to now()
-		let tzoffset = (new Date()).getTimezoneOffset() * 60000; // timezone offset in milliseconds
-		let localISOTime = (new Date(Date.now() - tzoffset)).toISOString().substr(0,19);
-        requestArr.getElementsByTagName("DepArrTime")[0].innerHTML = localISOTime;
+		request.getElementsByTagName("DepArrTime")[0].innerHTML = this.getLocalIsoTime();
 
-        // set headers
-        xhrArr = new XMLHttpRequest();
-        xhrArr.open('POST', that.url);
-        xhrArr.setRequestHeader('Authorization',that.apiKey);
-        xhrArr.setRequestHeader('Content-Type','application/xml');
-        xhrArr.addEventListener('load',function () {                                       // onload callback
-            that.arrivalsDataTmp = this.responseXML;
+		let serializer = new XMLSerializer();
 
-            if(flag === 1) {								// departures already loaded
-                that.parse();
-				if (typeof(callback) === "function") {
-					callback.call(context);
-				}
-                flag = 0;									// reset flag
-            } else {
-                flag = 1;
-            }
-        });
-        xhrArr.addEventListener('error',function () {
-            that.errorHandling(xhrArr);
-        })
-        xhrArr.send(requestArr);
+		let response = await fetch(that.url, {
+			method: "POST",
+			headers: {
+				'Authorization': that.apiKey,
+				'Content-Type': 'application/xml',
+			},
+			body: serializer.serializeToString(request),
+		});
+ 		let data = await response.text()
+		return this.parse(parser.parseFromString(data, "text/xml"));
+	},
 
-		// build departures request
-        requestDep = parser.parseFromString(requestString, "text/xml"); 				//important to use "text/xml"
-        requestDep.getElementsByTagName("StopPointRef")[0].innerHTML = that.config.station;
-        requestDep.getElementsByTagName("StopEventType")[0].innerHTML = "departure";
-        requestDep.getElementsByTagName("NumberOfResults")[0].innerHTML = that.config.limit;
-        requestDep.getElementsByTagName("DepArrTime")[0].innerHTML = localISOTime;
-
-		// set headers
-        xhrDep = new XMLHttpRequest();
-        xhrDep.open('POST', that.url);
-        xhrDep.setRequestHeader('Authorization',that.apiKey);
-        xhrDep.setRequestHeader('Content-Type','application/xml');
-        xhrDep.addEventListener('load',function () {						// onload callback
-            that.departuresDataTmp = this.responseXML;
-
-            if(flag === 1) {								// arrivals already loaded
-                that.parse();
-				if (typeof(callback) === "function") {
-					callback.call(context);
-				}
-                flag = 0;									// reset flag
-            } else {
-                flag = 1;
-            }
-        });
-        xhrDep.addEventListener('error',function () {
-            that.errorHandling(xhrDep);
-        })
-        xhrDep.send(requestDep);
-    },
+	// set time of request to now()
+	getLocalIsoTime: function () {
+		let timezoneOffset = (new Date()).getTimezoneOffset() * 60000; // timezone offset in milliseconds
+		return (new Date(Date.now() - timezoneOffset)).toISOString().substr(0, 19);
+	},
 
 	/**
 	 * Parse API Data from XML to train object array trains
 	 *
 	 *
 	 */
-    parse: function () {
-		const that = this;
+    parse: function (data) {
+		let trains = [];
+		let stopEventResults= data.getElementsByTagName("StopEventResult");
+		for(let i=0;i<stopEventResults.length;i++) {
+            let train = {};
+            this.parseService(stopEventResults[i].getElementsByTagName("Service")[0], train);
+            this.parseThisCall(stopEventResults[i].getElementsByTagName("ThisCall")[0],train);		// current stop
+            train.fromPasslist = this.parsePasslist(stopEventResults[i].getElementsByTagName("PreviousCall"));	// from passlist (PreviousCall)
+            train.toPasslist = this.parsePasslist(stopEventResults[i].getElementsByTagName("OnwardCall"));		// to passlist (OnwardCall)
 
-		// parse arrivals
-		let arrivalTrains = [];
-		let stopEventResultsArrival= that.arrivalsDataTmp.getElementsByTagName("StopEventResult");
-		for(let i=0;i<stopEventResultsArrival.length;i++) {
-            let train = {};																							// generate new train object todo: add default values through constructor
-            that.parseService(stopEventResultsArrival[i].getElementsByTagName("Service")[0], train);
-            that.parseThisCall(stopEventResultsArrival[i].getElementsByTagName("ThisCall")[0],train);		// current stop
-            train.fromPasslist = that.parsePasslist(stopEventResultsArrival[i].getElementsByTagName("PreviousCall"));	// from passlist (PreviousCall)
-            train.toPasslist = that.parsePasslist(stopEventResultsArrival[i].getElementsByTagName("OnwardCall"));		// to passlist (OnwardCall)
-
-            arrivalTrains.push(train);
+            trains.push(train);
         }
-
-        // parse departures
-		let departureTrains = [];
-		let stopEventResultsDeparture= that.departuresDataTmp.getElementsByTagName("StopEventResult");
-		for(let i=0;i<stopEventResultsDeparture.length;i++) {
-			let train = {};																						// generate new train object
-			that.parseService(stopEventResultsDeparture[i].getElementsByTagName("Service")[0],train);
-            that.parseThisCall(stopEventResultsDeparture[i].getElementsByTagName("ThisCall")[0],train);		// current stop
-            train.fromPasslist = that.parsePasslist(stopEventResultsDeparture[i].getElementsByTagName("PreviousCall"));	// from passlist (PreviousCall)
-            train.toPasslist = that.parsePasslist(stopEventResultsDeparture[i].getElementsByTagName("OnwardCall"));		// to passlist (OnwardCall)
-
-			departureTrains.push(train);
-        }
-
-        that.merge(arrivalTrains, departureTrains);
-
-		that.trains = that.trains.filter(that.checkDepartureArrivalTimes);       // filter out trains which left the station
-		that.trains = that.trains.filter(that.checkType.bind(that));     // filter by train types
+		return trains;
     },
 
 	/**
@@ -275,6 +230,7 @@ let data = {
 	merge: function (arrivalTrains, departureTrains) {
 		const that = this;
 
+		let trains = [];
         let trainMerged;
         let correspondingDepartingTrain;
 
@@ -297,7 +253,8 @@ let data = {
             }
 
             if(that.updateTrains(trainMerged) === false) {      // when train not yet in list
-                that.trains.push(trainMerged);
+
+				trains.push(trainMerged);
             }
         });
 
@@ -306,11 +263,11 @@ let data = {
 			delete departureTrain.cancelled;
 
             if(that.updateTrains(departureTrain) === false) {                   // not yet in list
-                that.trains.push(departureTrain);
+                trains.push(departureTrain);
             }
         });
 
-
+		return trains;
     },
 
 	/**

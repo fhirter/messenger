@@ -5,6 +5,9 @@
  * Displays train data from data object in html list
  *
  */
+
+// todo: fix auto refresh
+
 let stationBoard = {
 	refreshRate: 30, // [s]
 	intervalId: 0,
@@ -28,33 +31,19 @@ let stationBoard = {
 		transportations: ['RegioExpress', 'Intercity', 'Eurocity','InterRegio', 'ICE'],
 		limit: 40,
 	},
-	
-	setRefreshRate: function(refreshRate) {
-		this.refreshRate = refreshRate;
-		this.startAutoRefresh();
-		this.resetCountdown();
-	},
 
 	startAutoRefresh: function() {
-        let that = this;
-		if(that.intervalId !== 0) {
-			clearInterval(that.intervalId);
+        let {intervalId, load, refreshRate} = this;
+		if(intervalId !== 0) {
+			clearInterval(intervalId);
 		}
-		this.intervalId = setInterval(function() {that.load()},(that.refreshRate)*1000);
-	},
-	
-	setLimit: function(limit) {
-		this.config.limit = limit;
-		this.saveConfig();
-		this.load();		// reset output
-		this.startAutoRefresh();
-
+		this.intervalId = setInterval(function() {load()},(refreshRate)*1000);
 	},
 	
 	setTransportations: function(transportations) {
 		this.config.transportations = transportations;
 		this.saveConfig();
-		this.load();		// reset output
+		const promise = this.load();		// reset output
 		this.startAutoRefresh();	
 	},
 
@@ -63,19 +52,27 @@ let stationBoard = {
 			localStorage.config = JSON.stringify(this.config);
 		}
 	},
+
+	loadConfig: function() {
+		if (typeof(Storage) !== "undefined") {
+			if (localStorage.config) {
+				this.config = JSON.parse(localStorage.config);
+			}
+		}
+	},
 	
 	startCountdown: function() {
-		var that = this;
+		let that = this;
 		this.countdown = this.refreshRate;
 		document.getElementById("countdown").textContent = that.countdown;
 		setInterval(function() {that.decrementCountdown()},1000);
 	},
 	
-	decrementCountdown: function() {
+	decrementCountdown: function () {
 		this.countdown--;
 		document.getElementById("countdown").textContent = this.countdown;
-		if(this.countdown === 0) {
-			this.load();
+		if (this.countdown === 0) {
+			const promise = this.load();
 		}
 	},
 	
@@ -84,63 +81,35 @@ let stationBoard = {
 	},
 	
 	
-	load: function() {
+	load: async function() {
 		this.resetCountdown();
 
 		let countdown = document.getElementById("countdown");
 		countdown.classList.add("loading");
 		countdown.classList.remove("counting");
 
-		if (typeof(Storage) !== "undefined") {
-			if (localStorage.config) {
-				this.config = JSON.parse(localStorage.config);
-			}
-		}
-
+		this.loadConfig();
 		this.data.setConfig(this.config);			// set configuration for data object
-		this.data.load(this.parse,this);
+
+		await this.data.load();
+		this.parse();
 	},
 
-	parseJourneyRef: function (train) {
-		let that = this;
-		let string;
-		let lineNo;
-		let journeyNo;
-		let journeyRef;
-		let type = train.type;
 
-
-		// replace transportation type with shorthand name, i.e. Intercity becomes IC
-		that.transportationsEquivalents.forEach(function(pair) {
-			type = type.replace(pair[0],pair[1]);
-		});
-
-
-		journeyRef = train.journeyRef.split(':');
-
-		lineNo = parseInt(journeyRef[1].substr(2,3),10);
-		journeyNo = journeyRef[5];
-
-		string = type + " " + lineNo + " " + journeyNo;
-
-		return string;
-	},
 
 	parse: function() {
+		let trains = data.trains;
 		let that = this;
 
-		let i;
-		let train;
-
-		let table = document.querySelector("#arrivals tbody");
-
-		let arrivalDelay, departureDelay;
+		const table = document.querySelector("#arrivals tbody");
 
 		while(table.firstChild) {						//emtpy table
             table.removeChild(table.firstChild);
         }
 
-		for(i=0;i<that.data.trains.length;i++) {
+		for(let i=0;i<trains.length;i++) {
+			let train = trains[i];
+
 			let row = document.createElement("tr");
 
 			let platform = document.createElement("td");
@@ -151,9 +120,6 @@ let stationBoard = {
 			let toPasslist = document.createElement("td");
 			let arrivalTime = document.createElement("td");
 			let departureTime = document.createElement("td");
-
-
-			train = this.data.trains[i];
 
 			// lock
 			let lock = document.createElement("td");
@@ -208,8 +174,8 @@ let stationBoard = {
 			arrivalTime.classList.add("arrival_time");
 			arrivalTime.appendChild(document.createTextNode(that.formatTime(train.arrivalTime,"HH:mm")));
 
-			arrivalDelay = that.getDelay(train.estimatedArrivalTime,train.arrivalTime);
-			var arrivalDelayElement = document.createElement("span");
+			let arrivalDelay = that.getDelay(train.estimatedArrivalTime,train.arrivalTime);
+			let arrivalDelayElement = document.createElement("span");
 			if(arrivalDelay !== false) {
 				if(arrivalDelay>0) {
                     arrivalDelayElement.classList.add("delay");
@@ -236,8 +202,8 @@ let stationBoard = {
 			departureTime.classList.add("departure");
 			departureTime.appendChild(document.createTextNode(that.formatTime(train.departureTime,"HH:mm")));
 
-			departureDelay = that.getDelay(train.estimatedDepartureTime, train.departureTime);
-			var departureDelayElement = document.createElement("span");
+			let departureDelay = that.getDelay(train.estimatedDepartureTime, train.departureTime);
+			let departureDelayElement = document.createElement("span");
 			if(departureDelay !== false) {
 				if(departureDelay>0) {
 					departureDelayElement.classList.add("delay");
@@ -257,14 +223,36 @@ let stationBoard = {
 			row.appendChild(to);
 			row.appendChild(lock);
 			table.appendChild(row);
-
-			var countdown = document.getElementById("countdown");
-			countdown.classList.remove("loading");
-			countdown.classList.add("counting");
-
 		}
-		
-			
+
+		let countdown = document.getElementById("countdown");
+		countdown.classList.remove("loading");
+		countdown.classList.add("counting");
+	},
+
+	parseJourneyRef: function (train) {
+		let that = this;
+		let string;
+		let lineNo;
+		let journeyNo;
+		let journeyRef;
+		let type = train.type;
+
+
+		// replace transportation type with shorthand name, i.e. Intercity becomes IC
+		that.transportationsEquivalents.forEach(function(pair) {
+			type = type.replace(pair[0],pair[1]);
+		});
+
+
+		journeyRef = train.journeyRef.split(':');
+
+		lineNo = parseInt(journeyRef[1].substr(2,3),10);
+		journeyNo = journeyRef[5];
+
+		string = type + " " + lineNo + " " + journeyNo;
+
+		return string;
 	},
 
 	formatTime: function (date, formatString) {
