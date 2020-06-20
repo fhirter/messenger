@@ -1,4 +1,4 @@
-//get stations list
+// module for choosing from all available stations
 
 // todo: change to fetch
 stations = {

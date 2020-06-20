@@ -59,7 +59,7 @@ language = {
 	},
 
 	setCode: function (code) {
-		var defaultCode = "de-CH";
+		let defaultCode = "de-CH";
 
 		if(typeof this.sets[code] !== 'undefined') {	// check if a set with given code exists
 			this.code = code;
@@ -71,7 +71,7 @@ language = {
 	},
 
 	parse: function () {
-		that = this;
+		let that = this;
 
 		that.sets[that.code].forEach(function (entry) {
 			document.getElementById(entry[0]).innerText = entry[1];

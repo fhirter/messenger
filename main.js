@@ -1,6 +1,8 @@
 'use strict';
 
+data.apiKey = apiKey;
 stationBoard.data = data;
+
 
 stationBoard.load();
 
@@ -9,10 +11,10 @@ document.querySelector("option[value="+language.code+"]").selected = true;		// s
 language.parse();
 
 var transportationsEventHandler = function () {
-    let i;
     let transportations = [];
+
     let checkboxes = document.querySelectorAll("#transportations input:checked")
-    for (i = 0; i < checkboxes.length; i++) {
+    for (let i = 0; i < checkboxes.length; i++) {
         transportations.push(checkboxes[i].value);
     }
     stationBoard.setTransportations(transportations);

@@ -87,10 +87,9 @@ let stationBoard = {
 	load: function() {
 		this.resetCountdown();
 
-		var countdown = document.getElementById("countdown");
+		let countdown = document.getElementById("countdown");
 		countdown.classList.add("loading");
 		countdown.classList.remove("counting");
-
 
 		if (typeof(Storage) !== "undefined") {
 			if (localStorage.config) {

@@ -3,26 +3,23 @@
 /**
  * Data Acess Layer Object
  * Fetches data from opentransportdata.swiss API
- * @author Fabian Hirter, fabian@berghirt.ch
  *
  */
-var data = {
+
+
+let data = {
 	config: {},
 
     url: "https://api.opentransportdata.swiss/trias",
-	apiKey: "57c5dbbbf1fe4d0001000018e0c4735a94714ca964fad054340c4228",
-	
-	// arrivalTrains: [],
-	// departureTrains: [],
+	apiKey: "",
+
 	trains: [],						// Array of train objects, each item holds a train arriving and/or leaving at the selected station
 
 	departuresDataTmp: 0,
 	arrivalsDataTmp: 0,
-    // requestTime: new Date(),
-
 
 	/**
-	 * Set configuration from user
+	 * Set user configuration
 	 *
 	 * @param config - Properties: string station, array transportations, int limit
 	 */
@@ -51,12 +48,17 @@ var data = {
 	 *
 	 */
 	load: function (callback, context) {
-		var that = this;
-		var flag = 0;
+		const that = this;
+		let flag = 0;
 
-		var requestString = '<?xml version="1.0" encoding="UTF-8"?> <Trias version="1.1" xmlns="http://www.vdv.de/trias" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> <ServiceRequest> <siri:RequestTimestamp>2016-06-27T13:34:00</siri:RequestTimestamp> <siri:RequestorRef>EPSa</siri:RequestorRef> <RequestPayload> <StopEventRequest> <Location> <LocationRef> <StopPointRef></StopPointRef> </LocationRef> <DepArrTime> </DepArrTime> </Location> <Params> <NumberOfResults></NumberOfResults> <StopEventType></StopEventType> <IncludePreviousCalls>true</IncludePreviousCalls> <IncludeOnwardCalls>true</IncludeOnwardCalls> <IncludeRealtimeData>true</IncludeRealtimeData> </Params> </StopEventRequest> </RequestPayload> </ServiceRequest> </Trias>';
-		var parser = new DOMParser();
-		var requestArr, requestDep, xhrArr,xhrDep;
+		if(this.apiKey.length === 0) {
+			console.log("No API Key specified!")
+			return false;
+		}
+
+		let requestString = '<?xml version="1.0" encoding="UTF-8"?> <Trias version="1.1" xmlns="http://www.vdv.de/trias" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> <ServiceRequest> <siri:RequestTimestamp>2016-06-27T13:34:00</siri:RequestTimestamp> <siri:RequestorRef>EPSa</siri:RequestorRef> <RequestPayload> <StopEventRequest> <Location> <LocationRef> <StopPointRef></StopPointRef> </LocationRef> <DepArrTime> </DepArrTime> </Location> <Params> <NumberOfResults></NumberOfResults> <StopEventType></StopEventType> <IncludePreviousCalls>true</IncludePreviousCalls> <IncludeOnwardCalls>true</IncludeOnwardCalls> <IncludeRealtimeData>true</IncludeRealtimeData> </Params> </StopEventRequest> </RequestPayload> </ServiceRequest> </Trias>';
+		let parser = new DOMParser();
+		let requestArr, requestDep, xhrArr,xhrDep;
 
 		// build arrivals request
         requestArr = parser.parseFromString(requestString, "text/xml");
@@ -65,8 +67,8 @@ var data = {
         requestArr.getElementsByTagName("NumberOfResults")[0].innerHTML = that.config.limit;
 
         // set time of request to now()
-        var tzoffset = (new Date()).getTimezoneOffset() * 60000; // timezone offset in milliseconds
-        var localISOTime = (new Date(Date.now() - tzoffset)).toISOString().substr(0,19);
+		let tzoffset = (new Date()).getTimezoneOffset() * 60000; // timezone offset in milliseconds
+		let localISOTime = (new Date(Date.now() - tzoffset)).toISOString().substr(0,19);
         requestArr.getElementsByTagName("DepArrTime")[0].innerHTML = localISOTime;
 
         // set headers
@@ -129,21 +131,13 @@ var data = {
 	 *
 	 */
     parse: function () {
-
-
-		var that = this;
-        var i;
-        var train;
-
-        var stopEventResultsArrival= that.arrivalsDataTmp.getElementsByTagName("StopEventResult");
-        var stopEventResultsDeparture= that.departuresDataTmp.getElementsByTagName("StopEventResult");
-
-        var arrivalTrains = [];
-		var departureTrains = [];
+		const that = this;
 
 		// parse arrivals
-        for(i=0;i<stopEventResultsArrival.length;i++) {
-            train = {};																							// generate new train object todo: add default values through constructor
+		let arrivalTrains = [];
+		let stopEventResultsArrival= that.arrivalsDataTmp.getElementsByTagName("StopEventResult");
+		for(let i=0;i<stopEventResultsArrival.length;i++) {
+            let train = {};																							// generate new train object todo: add default values through constructor
             that.parseService(stopEventResultsArrival[i].getElementsByTagName("Service")[0], train);
             that.parseThisCall(stopEventResultsArrival[i].getElementsByTagName("ThisCall")[0],train);		// current stop
             train.fromPasslist = that.parsePasslist(stopEventResultsArrival[i].getElementsByTagName("PreviousCall"));	// from passlist (PreviousCall)
@@ -153,8 +147,10 @@ var data = {
         }
 
         // parse departures
-        for(i=0;i<stopEventResultsDeparture.length;i++) {
-			train = {};																						// generate new train object
+		let departureTrains = [];
+		let stopEventResultsDeparture= that.departuresDataTmp.getElementsByTagName("StopEventResult");
+		for(let i=0;i<stopEventResultsDeparture.length;i++) {
+			let train = {};																						// generate new train object
 			that.parseService(stopEventResultsDeparture[i].getElementsByTagName("Service")[0],train);
             that.parseThisCall(stopEventResultsDeparture[i].getElementsByTagName("ThisCall")[0],train);		// current stop
             train.fromPasslist = that.parsePasslist(stopEventResultsDeparture[i].getElementsByTagName("PreviousCall"));	// from passlist (PreviousCall)
@@ -166,36 +162,26 @@ var data = {
         that.merge(arrivalTrains, departureTrains);
 
 		that.trains = that.trains.filter(that.checkDepartureArrivalTimes);       // filter out trains which left the station
-
 		that.trains = that.trains.filter(that.checkType.bind(that));     // filter by train types
     },
 
 	/**
 	 * Parse service xml structure to train object
 	 *
-	 *
 	 * @param service - service xml structure to be parsed
 	 * @param train - train object to be populated
 	 */
 	parseService: function (service, train) {
-        var mode;
-
-        var cancelled, unplanned;
-
         train.lineRef = service.getElementsByTagName("LineRef")[0].textContent;
-
         train.journeyRef = service.getElementsByTagName("JourneyRef")[0].textContent;
 
-        mode = service.getElementsByTagName("Mode")[0];
+        let mode = service.getElementsByTagName("Mode")[0];
 
         train.type = mode.getElementsByTagName("Name")[0].firstChild.textContent;
-
-
         train.from = service.getElementsByTagName("OriginText")[0].firstChild.textContent;
         train.to = service.getElementsByTagName("DestinationText")[0].firstChild.textContent;
 
-
-        cancelled = service.getElementsByTagName("Cancelled")[0];
+        let cancelled = service.getElementsByTagName("Cancelled")[0];
         if(cancelled !== undefined) {
             if(cancelled.textContent === "true") {
                 train.cancelled = true;
@@ -205,7 +191,7 @@ var data = {
             }
         }
 
-        unplanned = service.getElementsByTagName("Unplanned")[0];
+        let unplanned = service.getElementsByTagName("Unplanned")[0];
         if(unplanned !== undefined) {
             if (unplanned.textContent === "true") {
                 train.unplanned = true;
@@ -217,16 +203,14 @@ var data = {
     },
 
 	/**
-	 *
 	 * Parse thisCall XML structure to train object
 	 *
 	 * @param thisCall - xml structure to be parsed
 	 * @param train - train object to be populated
 	 */
 	parseThisCall: function (thisCall, train) {
-		var serviceArrival, serviceDeparture;
-		var plannedBay,estimatedBay, estimatedTime;
-		var prognoseMoeglich;
+		let serviceArrival, serviceDeparture;
+		let plannedBay,estimatedBay, estimatedTime;
 
         plannedBay = thisCall.getElementsByTagName("PlannedBay")[0];
         if (plannedBay !== undefined) {
@@ -273,10 +257,9 @@ var data = {
 	 * @returns {Array} - String array of stops
 	 */
 	parsePasslist: function (passlist) {
-        var i;
-        var passlistFormat = [];
+        let passlistFormat = [];
 
-        for(i=0;i<passlist.length;i++) {
+        for(let i=0;i<passlist.length;i++) {
             passlistFormat.push(passlist[i].getElementsByTagName("StopPointName")[0].firstChild.textContent);
         }
         return passlistFormat;
@@ -290,14 +273,14 @@ var data = {
 	 * @param departureTrains - array of departing trains
 	 */
 	merge: function (arrivalTrains, departureTrains) {
-        var trainMerged;
-        var correspondingDepartingTrain;
+		const that = this;
 
-        var that = this;
+        let trainMerged;
+        let correspondingDepartingTrain;
 
         arrivalTrains.forEach(function(trainArriving) {
 
-            var correspondingDepartingTrainIndex = departureTrains.findIndex(function(train) {          			// search departing trains for journeyReference of arriving train
+            let correspondingDepartingTrainIndex = departureTrains.findIndex(function(train) {          			// search departing trains for journeyReference of arriving train
                 return train.journeyRef === trainArriving.journeyRef;
             });
 
@@ -376,9 +359,9 @@ var data = {
 	 * @returns {boolean} - false if train not in array this.trains, else true
 	 */
     updateTrains: function (train) {
-        var that = this;
-        var foundTrain;
-		var foundTrainIndex = -1;
+        const that = this;
+        let foundTrain;
+		let foundTrainIndex = -1;
 
         that.trains.forEach(function(trainElement, index, array) {
 			if(train.journeyRef === trainElement.journeyRef) {
@@ -429,7 +412,7 @@ var data = {
 	 * @returns {boolean}
 	 */
 	checkType: function (train) {
-		var that = this;
+		const that = this;
 
 		if(train.lock === true) {				// keep in list, when lock is set
 			return true;
@@ -449,12 +432,12 @@ var data = {
 	 * @returns {string} - JSON Datestring
 	 */
 	timestampToJson: function(timestamp) {
-		var date = new Date(timestamp);			// generate date from earlies arrival time
-		var offset = date.getTimezoneOffset()/60;			// get current timezone offset
+		let date = new Date(timestamp);			// generate date from earlies arrival time
+		let offset = date.getTimezoneOffset()/60;			// get current timezone offset
 			
 		date.setHours(date.getHours()-offset);				// adjust date with offset
 		
-		return date.toJSON();				// set query date to earlies arrival date
+		return date.toJSON();				// set query date to earliest arrival date
 	},
 
 
@@ -464,8 +447,8 @@ var data = {
 	 * @param jqXHR
 	 */
 	errorHandling: function(jqXHR) {
-        var alert = document.getElementById("alert");
-        alert.style.visibility = "visible";
+		const alert = document.getElementById("alert");
+		alert.style.visibility = "visible";
 
         alert.getElementsByTagName("span")[0].text(jqXHR.statusText);
 
@@ -481,7 +464,7 @@ var data = {
 	 * @returns {boolean} - true if matching object found, else false
 	 */
 	lock: function(journeyRef) {
-		var that = this;
+		const that = this;
 
 		that.trains.forEach(function(train, index, array) {
 			if(train.journeyRef === journeyRef) {
@@ -499,7 +482,7 @@ var data = {
 	 * @returns {boolean} - true if matching object found, else false
 	 */
 	unlock: function(journeyRef) {
-		var that = this;
+		const that = this;
 
 		that.trains.forEach(function(train, index, array) {
 			if(train.journeyRef === journeyRef) {
