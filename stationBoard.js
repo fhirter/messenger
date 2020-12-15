@@ -18,48 +18,39 @@ let stationBoard = {
 	earliestArrival: 0, // seconds timestamp
 
 	transportationsEquivalents: [
-		['RegioExpress','RE'],
-		['Intercity','IC'],
-		['Eurocity','EC'],
-		['InterRegio','IR'],
+		['RE','RE'],
+		['IC','IC'],
+		['EC','EC'],
+		['IR','IR'],
 		['ICE','ICE'],
-		['S-Bahn','S']
+		['S','S']
 	],
 
 	config: {
 		station: "8507000",
-		transportations: ['RegioExpress', 'Intercity', 'Eurocity','InterRegio', 'ICE'],
+		transportations: ['RE', 'IC', 'EC','IR', 'IC', 'ICE'],
 		limit: 40,
 	},
 
-	startAutoRefresh: function() {
-        let {intervalId, load, refreshRate} = this;
-		if(intervalId !== 0) {
-			clearInterval(intervalId);
-		}
-		this.intervalId = setInterval(function() {load()},(refreshRate)*1000);
-	},
-	
 	setTransportations: function(transportations) {
 		this.config.transportations = transportations;
-		this.saveConfig();
-		const promise = this.load();		// reset output
-		this.startAutoRefresh();	
+		//this.saveConfig(this.config);
+		this.load();
 	},
 
-	saveConfig: function () {
-		if (typeof(Storage) !== "undefined") {
-			localStorage.config = JSON.stringify(this.config);
-		}
-	},
-
-	loadConfig: function() {
-		if (typeof(Storage) !== "undefined") {
-			if (localStorage.config) {
-				this.config = JSON.parse(localStorage.config);
-			}
-		}
-	},
+	// saveConfig: function (config) {
+	// 	if (typeof(Storage) !== "undefined") {
+	// 		localStorage.config = JSON.stringify(config);
+	// 	}
+	// },
+	//
+	// getConfig: function() {
+	// 	if (typeof(Storage) !== "undefined" && localStorage.config) {
+	// 		return JSON.parse(localStorage.config);
+	// 	} else {
+	// 		return this.config;
+	// 	}
+	// },
 	
 	startCountdown: function() {
 		let that = this;
@@ -72,7 +63,8 @@ let stationBoard = {
 		this.countdown--;
 		document.getElementById("countdown").textContent = this.countdown;
 		if (this.countdown === 0) {
-			const promise = this.load();
+			this.load();
+			this.resetCountdown();
 		}
 	},
 	
@@ -81,18 +73,16 @@ let stationBoard = {
 	},
 	
 	
-	load: async function() {
-		this.resetCountdown();
-
+	load: function() {
 		let countdown = document.getElementById("countdown");
 		countdown.classList.add("loading");
 		countdown.classList.remove("counting");
 
-		this.loadConfig();
 		this.data.setConfig(this.config);			// set configuration for data object
 
-		await this.data.load();
-		this.parse();
+		this.data.load().then(() => {
+			this.parse();
+		});
 	},
 
 
