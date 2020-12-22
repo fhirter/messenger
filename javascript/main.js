@@ -1,15 +1,19 @@
 'use strict';
 
 data.apiKey = apiKey;
-data.setConfig(stationBoard.config);			// set configuration for data object
 
-// stationBoard.startLoading(data);
+const reloadInterval = 30;
 
-data.load(requestParser).then((trains) => {
-	stationBoard.parse(trains);
-});
+load();
 
-translation.load();
-document.querySelector("option[value="+translation.code+"]").selected = true;		// set selected language
-translation.parse();
+setInterval(() => {
+	load();
+}, reloadInterval*10000)
+
+function load() {
+	data.setConfig(stationBoardView.config);			// set configuration for data object
+	data.load(requestParser).then((trains) => {
+		stationBoardView.parse(trains);
+	});
+}
 

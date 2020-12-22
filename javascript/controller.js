@@ -1,12 +1,12 @@
 
-let transportationsEventHandler = function () {
+let transportationsEventHandler = function (event) {
     let transportations = [];
 
     let checkboxes = document.querySelectorAll("#transportations input:checked")
     for (let i = 0; i < checkboxes.length; i++) {
         transportations.push(checkboxes[i].value);
     }
-    stationBoard.setTransportations(transportations);
+    stationBoardView.setTransportations(transportations);
 }
 
 
@@ -15,26 +15,12 @@ let checkboxNodes = document.querySelectorAll("#transportations input[type=check
 for (let k = 0; k < checkboxNodes.length; k++) {
     checkboxNodes[k].addEventListener("change", transportationsEventHandler);
 
-    if(stationBoard.config.transportations.indexOf(checkboxNodes[k].value) !== -1) {					// set configuration from storage
+    if(stationBoardView.config.transportations.indexOf(checkboxNodes[k].value) !== -1) {					// set configuration from storage
         checkboxNodes[k].checked = "true"
     }
 }
 
-/* ### countdown ### */
-let mql = window.matchMedia("(max-device-width : 480px)");
-
-if (typeof mql === "object" && mql.matches === true) {
-    document.getElementById("countdown").innerHTML = "";
-} else {
-    stationBoard.startCountdown();
-}
-
-// refresh on click on countdown
-document.getElementById("countdown").addEventListener("click",
-    () => stationBoard.startLoading()
-);
-
-/* ### config menu ### */
+// config menu
 document.getElementById("show_menu").addEventListener("click", function () {
     let config = document.getElementById("config");
 
@@ -45,11 +31,14 @@ document.getElementById("show_menu").addEventListener("click", function () {
     }
 });
 
+// language menu change
 document.getElementById("language").addEventListener("change", function (event) {
     translation.setCode(this.value);
     translation.parse();
 });
 
+
+// close menu
 document.getElementsByTagName("body")[0].addEventListener("click", function (event) {		// hide config
     const target = event.target;
     const name = target.localName;
