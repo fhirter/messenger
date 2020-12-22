@@ -1,4 +1,4 @@
-language = {
+translation = {
 	code: 'de-CH',
 	sets: {
 		'de-CH': [

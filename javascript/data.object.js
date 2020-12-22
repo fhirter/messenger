@@ -1,26 +1,14 @@
 "use strict";
 
-/**
- * Data Acess Layer Object
- * Fetches data from opentransportdata.swiss API
- *
- */
-
-
 let data = {
 	config: {},
 
     url: "https://api.opentransportdata.swiss/trias2020",
 	requestString: '<?xml version="1.0" encoding="UTF-8"?> <Trias version="1.1" xmlns="http://www.vdv.de/trias" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> <ServiceRequest> <siri:RequestTimestamp>2016-06-27T13:34:00</siri:RequestTimestamp> <siri:RequestorRef>EPSa</siri:RequestorRef> <RequestPayload> <StopEventRequest> <Location> <LocationRef> <StopPointRef></StopPointRef> </LocationRef> <DepArrTime> </DepArrTime> </Location> <Params> <NumberOfResults></NumberOfResults> <StopEventType></StopEventType> <IncludePreviousCalls>true</IncludePreviousCalls> <IncludeOnwardCalls>true</IncludeOnwardCalls> <IncludeRealtimeData>true</IncludeRealtimeData> </Params> </StopEventRequest> </RequestPayload> </ServiceRequest> </Trias>',
 
-	prefix: "trias:",
-
 	apiKey: "",
 
-	trains: [],						// Array of train objects, each item holds a train arriving and/or leaving at the selected station
-
-	departuresDataTmp: 0,
-	arrivalsDataTmp: 0,
+	requestParser: {},
 
 	/**
 	 * Set user configuration
@@ -50,14 +38,18 @@ let data = {
 	 * Arrival and departure data gets loaded simultaniously, when both has been loaded parse() gets called
 	 *
 	 */
-	load: async function () {
+	load: async function (requestParser) {
+		const that = this;
+
+		that.requestParser = requestParser;
+
 		if(this.apiKey.length === 0) {
 			console.log("No API Key specified!")
 			return false;
 		}
 
-		let arrivalsPromise = this.loadData("arrival");
-		let departurePromise = this.loadData("departure");
+		let arrivalsPromise = this.fetchApi("arrival");
+		let departurePromise = this.fetchApi("departure");
 
 		let results = await Promise.allSettled([arrivalsPromise, departurePromise]);  // synchronize
 
@@ -66,11 +58,31 @@ let data = {
 		trains = trains.filter(this.isDepartureInThePast);       // filter out trains which left the station
 		trains = trains.filter(this.checkType.bind(this));     // filter by train types
 
-		this.trains = trains;
+		return trains;
     },
 
-	loadData: async function (type) {
+	fetchApi: async function (type) {
 		let that = this;
+
+		const serializer = new XMLSerializer();
+		let request = this.generateRequest(type);
+		const requestBody = serializer.serializeToString(request);
+
+		let response = await fetch(that.url, {
+			method: "POST",
+			headers: {
+				'Authorization': that.apiKey,
+				'Content-Type': 'application/xml',
+			},
+			body: requestBody,
+		});
+
+		let data = await response.text()
+		return that.requestParser.parse(data);
+	},
+
+	generateRequest: function (type) {
+		const that = this;
 
 		let parser = new DOMParser();
 
@@ -81,19 +93,7 @@ let data = {
 		request.getElementsByTagName("NumberOfResults")[0].innerHTML = that.config.limit;
 
 		request.getElementsByTagName("DepArrTime")[0].innerHTML = this.getLocalIsoTime();
-
-		let serializer = new XMLSerializer();
-
-		let response = await fetch(that.url, {
-			method: "POST",
-			headers: {
-				'Authorization': that.apiKey,
-				'Content-Type': 'application/xml',
-			},
-			body: serializer.serializeToString(request),
-		});
- 		let data = await response.text()
-		return this.parse(parser.parseFromString(data, "text/xml"));
+		return request;
 	},
 
 	// set time of request to now()
@@ -102,129 +102,6 @@ let data = {
 		return (new Date(Date.now() - timezoneOffset)).toISOString().substr(0, 19);
 	},
 
-	/**
-	 * Parse API Data from XML to train object array trains
-	 *
-	 *
-	 */
-    parse: function (data) {
-		let trains = [];
-
-		let stopEventResults= data.getElementsByTagName(this.prefix + "StopEventResult");
-		for(let i=0;i<stopEventResults.length;i++) {
-            let train = {};
-            this.parseService(stopEventResults[i].getElementsByTagName(this.prefix + "Service")[0], train);
-            this.parseThisCall(stopEventResults[i].getElementsByTagName(this.prefix + "ThisCall")[0],train);		// current stop
-            train.fromPasslist = this.parsePasslist(stopEventResults[i].getElementsByTagName(this.prefix + "PreviousCall"));	// from passlist (PreviousCall)
-            train.toPasslist = this.parsePasslist(stopEventResults[i].getElementsByTagName(this.prefix + "OnwardCall"));		// to passlist (OnwardCall)
-
-            trains.push(train);
-        }
-		return trains;
-    },
-
-	/**
-	 * Parse service xml structure to train object
-	 * Service: https://opentransportdata.swiss/de/cookbook/service-vdv-431/
-	 * Mode: https://opentransportdata.swiss/de/cookbook/ptmode/
-	 *
-	 * @param service - service xml structure to be parsed
-	 * @param train - train object to be populated
-	 */
-	parseService: function (service, train) {
-        train.lineRef = service.getElementsByTagName(this.prefix + "LineRef")[0].textContent;
-        train.journeyRef = service.getElementsByTagName(this.prefix + "JourneyRef")[0].textContent;
-
-        let mode = service.getElementsByTagName(this.prefix + "Mode")[0];
-
-        let modeName = mode.getElementsByTagName(this.prefix + "Name")[0].firstChild.textContent.split(" ");
-        train.type = modeName[0];
-        train.from = service.getElementsByTagName(this.prefix + "OriginText")[0].firstChild.textContent;
-        train.to = service.getElementsByTagName(this.prefix + "DestinationText")[0].firstChild.textContent;
-
-        let cancelled = service.getElementsByTagName(this.prefix + "Cancelled")[0];
-        if(cancelled !== undefined) {
-            if(cancelled.textContent === "true") {
-                train.cancelled = true;
-                console.log("parseService: ", train.from, train.to,"cancelled");
-            } else {
-                train.cancelled = false; // debug
-            }
-        }
-
-        let unplanned = service.getElementsByTagName(this.prefix + "Unplanned")[0];
-        if(unplanned !== undefined) {
-            if (unplanned.textContent === "true") {
-                train.unplanned = true;
-                console.log("parseService:",train.from, train.to,"unplanned");
-            } else {
-                train.unplanned = false;
-            }
-        }
-    },
-
-	/**
-	 * Parse thisCall XML structure to train object
-	 *
-	 * @param thisCall - xml structure to be parsed
-	 * @param train - train object to be populated
-	 */
-	parseThisCall: function (thisCall, train) {
-		let serviceArrival, serviceDeparture;
-		let plannedBay,estimatedBay, estimatedTime;
-
-        plannedBay = thisCall.getElementsByTagName(this.prefix + "PlannedBay")[0];
-        if (plannedBay !== undefined) {
-            train.platform = plannedBay.getElementsByTagName(this.prefix + "Text")[0].textContent;
-        } else {
-			delete train.platform;
-        }
-
-        estimatedBay = thisCall.getElementsByTagName(this.prefix + "EstimatedBay")[0];
-        if (estimatedBay !== undefined) {
-            train.platform = estimatedBay.getElementsByTagName(this.prefix + "Text")[0].textContent;
-            train.changedPlatform = true;
-        }
-
-        serviceArrival = thisCall.getElementsByTagName(this.prefix + "ServiceArrival")[0];
-        serviceDeparture = thisCall.getElementsByTagName(this.prefix + "ServiceDeparture")[0];
-
-
-        if(serviceArrival !== undefined) {
-            train.arrivalTime = new Date(serviceArrival.getElementsByTagName(this.prefix + "TimetabledTime")[0].textContent);
-			estimatedTime =  serviceArrival.getElementsByTagName(this.prefix + "EstimatedTime")[0];
-            if (estimatedTime !== undefined) {
-				train.estimatedArrivalTime = new Date(estimatedTime.textContent);
-			}
-		}
-
-        if(serviceDeparture !== undefined) {
-            train.departureTime = new Date(serviceDeparture.getElementsByTagName(this.prefix + "TimetabledTime")[0].textContent);
-			estimatedTime = serviceDeparture.getElementsByTagName(this.prefix + "EstimatedTime")[0];
-            if (estimatedTime !== undefined) {
-				train.estimatedDepartureTime = new Date(estimatedTime.textContent);
-			}
-		}
-
-
-
-    },
-
-	/**
-	 *
-	 * Parse PreviousCall and OnwardCall XML structure to array of stops
-	 *
-	 * @param passlist - PreviousCall or OnwardCall XML structure
-	 * @returns {Array} - String array of stops
-	 */
-	parsePasslist: function (passlist) {
-        let passlistFormat = [];
-
-        for(let i=0;i<passlist.length;i++) {
-            passlistFormat.push(passlist[i].getElementsByTagName(this.prefix + "StopPointName")[0].firstChild.textContent);
-        }
-        return passlistFormat;
-    },
 
 	/**
 	 *
@@ -238,7 +115,6 @@ let data = {
 
 		let mergedTrains = [];
         let mergedTrain;
-        let departingTrain;
 
         arrivalTrains.forEach(function(arrivingTrain) {
 			mergedTrain = arrivingTrain;
@@ -246,33 +122,37 @@ let data = {
 			delete mergedTrain.cancelled;
 
 			// search departing trains for journeyReference of arriving train
-            let departingTrainIndex = departureTrains.findIndex(function(departingTrain) {
+            let departingTrain = departureTrains.find(function(departingTrain) {
                 return departingTrain.journeyRef === arrivingTrain.journeyRef;
             });
 
-            if(departingTrainIndex !== -1) {                        // when corresponding train found
-				departingTrain = departureTrains[departingTrainIndex];
+            if(departingTrain !== undefined) {                        // when corresponding train found
                 mergedTrain.departureTime = departingTrain.departureTime;
 				mergedTrain.estimatedDepartureTime = departingTrain.estimatedDepartureTime;
 				mergedTrain.departureCancelled = departingTrain.cancelled;
-                departureTrains.splice(departingTrainIndex,1);				// remove this train from departure trains
+
+				departureTrains = departureTrains.filter((element) => {
+					return element !== departingTrain;
+				})
             }
-			that.insertOrUpdate(mergedTrain, mergedTrains);
+			mergedTrains = that.insertOrUpdate(mergedTrain, mergedTrains);
 		});
 
         departureTrains.forEach(function (departureTrain) {                 // push remaining departing trains
 			departureTrain.departureCancelled = departureTrain.cancelled;
 			delete departureTrain.cancelled;
 
-			that.insertOrUpdate(departureTrain, mergedTrains)
+			mergedTrains = that.insertOrUpdate(departureTrain, mergedTrains)
         });
+
+        console.log("arrival: "+arrivalTrains.length, "departure: "+departureTrains.length, "merged: "+mergedTrains.length)
 
 		return mergedTrains;
     },
 
 	insertOrUpdate: function(mergedTrain, mergedTrains) {
 		const that = this;
-		let foundTrain = that.trains.find(function (needle) {
+		let foundTrain = mergedTrains.find(function (needle) {
 			return mergedTrain.journeyRef === needle.journeyRef;
 		});
 
@@ -281,6 +161,7 @@ let data = {
 		} else {
 			that.updateTrain(foundTrain, mergedTrain)
 		}
+		return mergedTrains;
 	},
 
 	/**
