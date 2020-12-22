@@ -9,3 +9,8 @@ v0.2.0
 v0.4.1
 - bugfixing
 - ui cosmetics
+
+v0.5
+- refactorings
+- bugfixing
+- trias2020
