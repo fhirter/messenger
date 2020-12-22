@@ -38,6 +38,9 @@ const requestParser = {
         train.journeyRef = service.getElementsByTagName(this.prefix + "JourneyRef")[0].textContent;
 
         train.lineName = service.getElementsByTagName(this.prefix + "PublishedLineName")[0].firstChild.textContent;
+        let mode = service.getElementsByTagName(this.prefix + "Mode")[0];
+        train.type = mode.getElementsByTagName(this.prefix + "RailSubmode")[0].textContent;
+
         train.from = service.getElementsByTagName(this.prefix + "OriginText")[0].firstChild.textContent;
         train.to = service.getElementsByTagName(this.prefix + "DestinationText")[0].firstChild.textContent;
 

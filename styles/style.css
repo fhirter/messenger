@@ -1,34 +1,7 @@
-#countdown {
-	width: 50px;
-	height: 50px;
-	display: inline-block;
-
-	background-size: contain;
-	background-repeat: no-repeat;
-	font-size: 1.5em;
-	padding-top: 10px;
-	text-align: center;
-	cursor: pointer;
-    margin: 5px;
-}
-
-.counting {
-	background-image: url('../images/reload.png');
-}
-
-.loading {
-	background-image: url('../images/sanduhr.png');
-}
-	
-	
 body {
 	font-family: sans-serif;
     padding: 0;
     margin: 0;
-}
-
-header {
-    margin-bottom: 10px;
 }
 
 #version {
@@ -84,13 +57,16 @@ header {
 
 .stationtable th {
 	text-align: left;
+	border-left: solid thin #ddd;
+	border-right: solid thin #ddd;
+	border-bottom: solid thin #ddd;
 	padding: 10px 20px 10px 10px;
 }
 
 
 .stationtable td {
-	border-left: solid thin #dddddd;
-	border-right: solid thin #dddddd;
+	border-left: solid thin #ddd;
+	border-right: solid thin #ddd;
 	padding: 10px;
 	vertical-align: top;
 }

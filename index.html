@@ -5,12 +5,9 @@
 		<link rel="stylesheet" type="text/css" href="styles/mobile.css" />
 
 		<script src="javascript/config.js" defer="defer"></script>
-
-		<script src="javascript/language.object.js" defer="defer"></script>
-		<script src="javascript/stationBoard.js" defer="defer"></script>
+		<script src="javascript/stationBoard-view.js" defer="defer"></script>
 		<script src="javascript/data.object.js" defer="defer"></script>
 		<script src="javascript/requestParser.object.js" defer="defer"></script>
-		<script src="javascript/controller.js" defer="defer"></script>
 		<script src="javascript/main.js" defer="defer"></script>
 
 		<meta charset="UTF-8" />
@@ -21,35 +18,7 @@
 	</head>
 
 	<body>
-    <header>
-        <span id="countdown">0</span>
-        <div id="alert">
-            <span></span>
-
-        </div>
-        <div id="show_menu"></div>
-    </header>
-
 	<main>
-	<form id="config">
-		<fieldset id="transportations">
-			<input type="checkbox" value="EC" id="EC"/><label for="EC">Eurocity</label><br />
-			<input type="checkbox" value="ICE" id="ICE"/><label for="ICE">ICE</label><br />
-			<input type="checkbox" value="IC" id="IC"/><label for="IC">Intercity</label><br />
-			<input type="checkbox" value="IR"  id="IR"/><label for="IR">InterRegio</label><br />
-			<input type="checkbox" value="RE" id="RE"/><label for="RE">RegioExpress</label><br />
-			<input type="checkbox" value="S" id="S"/><label for="S">S-Bahn</label><br />
-		</fieldset>
-		<!--<span class="label">Station:</span><input type="text" id="station"><br />-->
-
-        <select id="language">
-            <option id="de-CH" value="de-CH"></option>
-            <option id="fr-CH" value="fr-CH"></option>
-            <option id="it-CH" value="it-CH"></option>
-        </select>
-
-	</form>
-
 
 	<form>
 		<table id="arrivals" class="stationtable">
@@ -69,20 +38,20 @@
 			<thead>
 				<tr>
 					<th>#</th>
-					<th id="type" class="type"></th>
-					<th id="from"></th>
-					<th id="fromPasslist" class="passlist"></th>
-					<th id="arrivalTime"></th>
-					<th id="departureTime"></th>
-					<th id="toPasslist" class="passlist"></th>
-					<th id="to"></th>
-					<th id="lock" class="lock"></th>
+					<th id="type" class="type">Liniennummer</th>
+					<th id="from">Von</th>
+					<th id="fromPasslist" class="passlist">Stationen</th>
+					<th id="arrivalTime">Ankunftszeit</th>
+					<th id="departureTime">Abfahrtszeit</th>
+					<th id="toPasslist" class="passlist">Stationen</th>
+					<th id="to">Nach</th>
+					<th id="lock" class="lock">Behalten</th>
 				</tr>
 			</thead>
 			<tbody></tbody>
 		</table>
 	</form>
-	<p id="version">fabianhirter.ch/messenger v0.4.3</p>
+	<p id="version">fabianhirter.ch/messenger v0.5</p>
 	</main>
 	</body>
 </html>

@@ -16,20 +16,6 @@ let data = {
 	 * @param config - Properties: string station, array transportations, int limit
 	 */
     setConfig: function (config) {
-	    config.transportations.push("Extrazug");                    // never filter out Extrazug
-
-	    // if(config.transportations.indexOf("S-Bahn") !== -1) {       // "S-Bahn" is called "S" sometimes, so add "S" too if "S-Bahn" is present
-	    //     config.transportations.push("S");
-        // }
-		//
-        // if(config.transportations.indexOf("Intercity") !== -1) {    // same with IC & Intercity, might not be useful data!
-	    //     config.transportations.push("IC");
-        // }
-		//
-		// if(config.transportations.indexOf("Eurocity") !== -1) {    // same with EC & Eurocity, probably not useful data
-		// 	config.transportations.push("EC");
-		// }
-
 	    this.config = config;
     },
 
@@ -234,15 +220,9 @@ let data = {
 	checkType: function (train) {
 		const that = this;
 
-		if(train.lock === true) {				// keep in list, when lock is set
-			return true;
-		}
+		let found = that.config.transportations.includes(train.type);
 
-        if(that.config.transportations.indexOf(train.type) === -1) {
-            return true;
-        } else {
-            return true;
-        }
+		return (found || train.lock === true)
     },
 
 	/**

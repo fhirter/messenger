@@ -6,75 +6,14 @@
  *
  */
 
-let stationBoard = {
+let stationBoardView = {
 	refreshRate: 30, // [s]
-	intervalId: 0,
-	countdown: 0,
-	
-	// data: {},		// data object
-	
 	earliestArrival: 0, // seconds timestamp
-
-	transportationsEquivalents: [
-		['RE','RE'],
-		['IC','IC'],
-		['EC','EC'],
-		['IR','IR'],
-		['ICE','ICE'],
-		['S','S']
-	],
 
 	config: {
 		station: "8507000",
-		transportations: ['RE', 'IC', 'EC','IR', 'IC', 'ICE'],
+		transportations: ['international', 'regionalRail', 'interregionalRail'], // one of: ['international', 'regionalRail', 'interregionalRail']
 		limit: 40,
-	},
-
-	setTransportations: function(transportations) {
-		this.config.transportations = transportations;
-		//this.saveConfig(this.config);
-		this.startLoading();
-	},
-
-	// saveConfig: function (config) {
-	// 	if (typeof(Storage) !== "undefined") {
-	// 		localStorage.config = JSON.stringify(config);
-	// 	}
-	// },
-	//
-	// getConfig: function() {
-	// 	if (typeof(Storage) !== "undefined" && localStorage.config) {
-	// 		return JSON.parse(localStorage.config);
-	// 	} else {
-	// 		return this.config;
-	// 	}
-	// },
-	
-	startCountdown: function() {
-		let that = this;
-		this.countdown = this.refreshRate;
-		document.getElementById("countdown").textContent = that.countdown;
-		setInterval(function() {that.decrementCountdown()},1000);
-	},
-	
-	decrementCountdown: function () {
-		this.countdown--;
-		document.getElementById("countdown").textContent = this.countdown;
-		if (this.countdown === 0) {
-			this.startLoading();
-			this.resetCountdown();
-		}
-	},
-	
-	resetCountdown: function() {
-		this.countdown = this.refreshRate;
-	},
-	
-	
-	startLoading: function() {
-		let countdown = document.getElementById("countdown");
-		countdown.classList.add("loading");
-		countdown.classList.remove("counting");
 	},
 
 	parse: function(trains) {
@@ -109,10 +48,6 @@ let stationBoard = {
 
 			table.appendChild(row);
 		})
-
-		let countdown = document.getElementById("countdown");
-		countdown.classList.remove("loading");
-		countdown.classList.add("counting");
 	},
 
 	createLockField: function (train, that) {
