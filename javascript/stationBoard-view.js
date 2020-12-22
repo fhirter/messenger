@@ -35,8 +35,8 @@ let stationBoardView = {
 				'fromPasslist': this.createFromPasslistElement(train),
 				'arrivalTime': this.createArrivalTimeElement(train),
 				'departureTime': this.createDepartureTimeElement(train),
-				'to': this.createToElement(train),
 				'toPasslist': this.createToPasslistElement(train),
+				'to': this.createToElement(train),
 				'lock': that.createLockField(train),
 			};
 
