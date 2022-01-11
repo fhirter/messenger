@@ -88,17 +88,25 @@ let stationBoardView = {
 		let type = document.createElement("td");
 		type.classList.add("type");
 
-        let journey = train.journeyRef.split(":");
-        let journeyNumber = journey.pop()
-        let infoUrl = "https://80e05b96-2d12-4945-b772-e22e7e1dd377-miku.app.sbb.ch/#/fahrten/direkt/" + journeyNumber;
-        let lineLink = document.createElement('a');
+        let journey;
+        let journeyNumber = '';
+        if (train.journeyRef !== ''){
+            journey = train.journeyRef.split(":");
+            journeyNumber = journey.pop();
+        }
 
-        lineLink.setAttribute('href', infoUrl);
-        lineLink.setAttribute('target', "_blank");
-        lineLink.innerHTML = train.lineName;
+        if (journeyNumber !== '') {
+            let infoUrl = "https://80e05b96-2d12-4945-b772-e22e7e1dd377-miku.app.sbb.ch/#/fahrten/direkt/" + journeyNumber;
+            let lineLink = document.createElement('a');
 
-		type.appendChild(lineLink);
+            lineLink.setAttribute('href', infoUrl);
+            lineLink.setAttribute('target', "_blank");
+            lineLink.innerHTML = train.lineName;
 
+            type.appendChild(lineLink);
+        } else {
+            type.appendChild(document.createTextNode(train.lineName));
+        }
 		return type;
 	},
 	createFromField: function (train) {
