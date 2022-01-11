@@ -3,6 +3,10 @@
         font-size: 0.7em;
     }
 
+    a:hover {
+        color: hotpink;
+    }
+
     .stationtable {
         margin:  0 0 0 0 ;
         width: 100%;
@@ -18,9 +22,9 @@
         display: none;
     }
 
-    .type {
-        display: none;
-    }
+    /* .type { */
+    /*     display: none; */
+    /* } */
 
     .lock {
         display: none;

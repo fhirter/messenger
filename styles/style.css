@@ -4,6 +4,10 @@ body {
     margin: 0;
 }
 
+a:hover {
+    color: hotpink;
+}
+
 #version {
 	font-style: italic;
 }

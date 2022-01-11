@@ -88,7 +88,16 @@ let stationBoardView = {
 		let type = document.createElement("td");
 		type.classList.add("type");
 
-		type.appendChild(document.createTextNode(train.lineName));
+        let journey = train.journeyRef.split(":");
+        let journeyNumber = journey.pop()
+        let infoUrl = "https://80e05b96-2d12-4945-b772-e22e7e1dd377-miku.app.sbb.ch/#/fahrten/direkt/" + journeyNumber;
+        let lineLink = document.createElement('a');
+
+        lineLink.setAttribute('href', infoUrl);
+        lineLink.setAttribute('target', "_blank");
+        lineLink.innerHTML = train.lineName;
+
+		type.appendChild(lineLink);
 
 		return type;
 	},
