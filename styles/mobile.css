@@ -1,19 +1,14 @@
-@media screen and (max-device-width : 480px) {
+@media screen and (max-device-width: 480px) {
     body {
         font-size: 0.7em;
     }
 
-    a:hover {
-        color: hotpink;
-    }
-
     .stationtable {
-        margin:  0 0 0 0 ;
+        margin: 0 0 0 0;
         width: 100%;
     }
 
     .stationtable td {
-
         border: solid thin #dddddd;
         padding: 20px 5px;
     }
@@ -21,10 +16,6 @@
     .passlist {
         display: none;
     }
-
-    /* .type { */
-    /*     display: none; */
-    /* } */
 
     .lock {
         display: none;
@@ -60,6 +51,4 @@
     #countdown {
         /*display: none;*/
     }
-
-
 }
