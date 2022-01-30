@@ -87,7 +87,7 @@ let stationBoardView = {
     createMikuLink: function (train) {
         let journey;
         let journeyNumber = '';
-        if (train.journeyRef !== ''){
+        if (!mikuLink == '' && train.journeyRef !== ''){
             journey = train.journeyRef.split(":");
             journeyNumber = journey.pop();
         }

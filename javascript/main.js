@@ -1,6 +1,7 @@
 'use strict';
 
 data.apiKey = apiKey;
+data.mikuLink = mikuLink;
 
 const reloadInterval = 30;
 

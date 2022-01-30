@@ -8,6 +8,8 @@ let data = {
 
 	apiKey: "",
 
+    mikuLink: "",
+
 	requestParser: {},
 
 	/**
@@ -30,8 +32,12 @@ let data = {
 		that.requestParser = requestParser;
 
 		if(this.apiKey.length === 0) {
-			console.log("No API Key specified!")
+			console.log("No API Key specified!");
 			return false;
+		}
+    
+		if(this.mikuLink.length === 0) {
+			console.log("No Miku URL specified!");
 		}
 
 		let arrivalsPromise = this.fetchApi("arrival");
