@@ -84,17 +84,13 @@ let stationBoardView = {
 		}
 		return platform;
 	},
-	createTypeField: function (train) {
-		let type = document.createElement("td");
-		type.classList.add("type");
-
+    createMikuLink: function (train) {
         let journey;
         let journeyNumber = '';
         if (train.journeyRef !== ''){
             journey = train.journeyRef.split(":");
             journeyNumber = journey.pop();
         }
-
         if (journeyNumber !== '') {
             let infoUrl = mikuLink + journeyNumber;
             let lineLink = document.createElement('a');
@@ -103,10 +99,22 @@ let stationBoardView = {
             lineLink.setAttribute('target', "_blank");
             lineLink.innerHTML = train.lineName;
 
+            return lineLink;
+        } else {
+            return undefined;
+        }
+    },
+	createTypeField: function (train) {
+		let type = document.createElement("td");
+		type.classList.add("type");
+
+        let lineLink = this.createMikuLink(train);
+        if (lineLink) {
             type.appendChild(lineLink);
         } else {
             type.appendChild(document.createTextNode(train.lineName));
         }
+
 		return type;
 	},
 	createFromField: function (train) {
