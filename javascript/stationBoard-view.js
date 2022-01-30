@@ -96,7 +96,7 @@ let stationBoardView = {
         }
 
         if (journeyNumber !== '') {
-            let infoUrl = "https://80e05b96-2d12-4945-b772-e22e7e1dd377-miku.app.sbb.ch/#/fahrten/direkt/" + journeyNumber;
+            let infoUrl = mikuLink + journeyNumber;
             let lineLink = document.createElement('a');
 
             lineLink.setAttribute('href', infoUrl);
