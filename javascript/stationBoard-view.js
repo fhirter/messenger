@@ -84,11 +84,36 @@ let stationBoardView = {
 		}
 		return platform;
 	},
+    createMikuLink: function (train) {
+        let journey;
+        let journeyNumber = '';
+        if (mikuLink !== '' && train.journeyRef !== ''){
+            journey = train.journeyRef.split(":");
+            journeyNumber = journey.pop();
+        }
+        if (journeyNumber !== '') {
+            let infoUrl = mikuLink + journeyNumber;
+            let lineLink = document.createElement('a');
+
+            lineLink.setAttribute('href', infoUrl);
+            lineLink.setAttribute('target', "_blank");
+            lineLink.innerHTML = train.lineName;
+
+            return lineLink;
+        } else {
+            return undefined;
+        }
+    },
 	createTypeField: function (train) {
 		let type = document.createElement("td");
 		type.classList.add("type");
 
-		type.appendChild(document.createTextNode(train.lineName));
+        let lineLink = this.createMikuLink(train);
+        if (lineLink) {
+            type.appendChild(lineLink);
+        } else {
+            type.appendChild(document.createTextNode(train.lineName));
+        }
 
 		return type;
 	},
