@@ -6,10 +6,6 @@ let data = {
     url: "https://api.opentransportdata.swiss/trias2020",
 	requestString: '<?xml version="1.0" encoding="UTF-8"?> <Trias version="1.1" xmlns="http://www.vdv.de/trias" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> <ServiceRequest> <siri:RequestTimestamp>2016-06-27T13:34:00</siri:RequestTimestamp> <siri:RequestorRef>EPSa</siri:RequestorRef> <RequestPayload> <StopEventRequest> <Location> <LocationRef> <StopPointRef></StopPointRef> </LocationRef> <DepArrTime> </DepArrTime> </Location> <Params> <NumberOfResults></NumberOfResults> <StopEventType></StopEventType> <IncludePreviousCalls>true</IncludePreviousCalls> <IncludeOnwardCalls>true</IncludeOnwardCalls> <IncludeRealtimeData>true</IncludeRealtimeData> </Params> </StopEventRequest> </RequestPayload> </ServiceRequest> </Trias>',
 
-	apiKey: "",
-
-    mikuLink: "",
-
 	requestParser: {},
 
 	/**
@@ -31,13 +27,9 @@ let data = {
 
 		that.requestParser = requestParser;
 
-		if(this.apiKey.length === 0) {
+		if(this.config.API_KEY.length === 0) {
 			console.log("No API Key specified!");
 			return false;
-		}
-    
-		if(this.mikuLink.length === 0) {
-			console.log("No Miku URL specified!");
 		}
 
 		let arrivalsPromise = this.fetchApi("arrival");
@@ -63,7 +55,7 @@ let data = {
 		let response = await fetch(that.url, {
 			method: "POST",
 			headers: {
-				'Authorization': that.apiKey,
+				'Authorization': that.config.API_KEY,
 				'Content-Type': 'application/xml',
 			},
 			body: requestBody,

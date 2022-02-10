@@ -7,14 +7,7 @@
  */
 
 let stationBoardView = {
-	refreshRate: 30, // [s]
 	earliestArrival: 0, // seconds timestamp
-
-	config: {
-		station: "8507000",
-		transportations: ['international', 'regionalRail', 'interregionalRail'], // one of: ['international', 'regionalRail', 'interregionalRail']
-		limit: 40,
-	},
 
 	parse: function(trains) {
 		let that = this;
@@ -87,12 +80,12 @@ let stationBoardView = {
     createMikuLink: function (train) {
         let journey;
         let journeyNumber = '';
-        if (mikuLink !== '' && train.journeyRef !== ''){
+        if (MIKU_LINK !== '' && train.journeyRef !== ''){
             journey = train.journeyRef.split(":");
             journeyNumber = journey.pop();
         }
         if (journeyNumber !== '') {
-            let infoUrl = mikuLink + journeyNumber;
+            let infoUrl = MIKU_LINK + journeyNumber;
             let lineLink = document.createElement('a');
 
             lineLink.setAttribute('href', infoUrl);
