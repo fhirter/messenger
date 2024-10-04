@@ -26,8 +26,8 @@ a:hover {
 	width: 5em;
 }
 
-.to,.from  {
-	width: 8em;
+.to, .from  {
+	width: 2em;
 }
 
 .arrival_time {
