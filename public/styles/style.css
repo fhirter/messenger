@@ -50,8 +50,7 @@ a:hover {
 	border-collapse: collapse;
 	width: calc(100% - 40px);
 	border: solid thin #dddddd;
-	margin: 20px;
-	margin-top: 50px;
+	margin: 50px 20px 20px;
 }
 
 .stationtable th {
