@@ -13,11 +13,9 @@
         padding: 20px 5px;
     }
 
-    .passlist {
-        display: none;
     }
 
-    .lock {
+    .type, .passlist, .lock {
         display: none;
     }
 
