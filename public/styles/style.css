@@ -2,6 +2,7 @@ body {
 	font-family: sans-serif;
     padding: 0;
     margin: 0;
+	background-color: lightgray;
 }
 
 a:hover {
@@ -32,7 +33,6 @@ a:hover {
 
 .arrival_time, .departure_time {
 	padding: 0;
-	background-color: gray;
 	font-weight: bold;
 	text-align: left;
     width: 4em;
@@ -47,10 +47,12 @@ a:hover {
 }
 
 .stationtable {
+	border-radius: 5px;
 	border-collapse: collapse;
-	width: calc(100vw - 40px);
+	background-color: hsl(0deg 0% 95%);
+	width: calc(100vw - 20px);
 	border: solid thin #dddddd;
-	margin: 50px 20px 20px;
+	margin: 10px;
 }
 
 .stationtable th {
@@ -58,13 +60,13 @@ a:hover {
 	border-left: solid thin #ddd;
 	border-right: solid thin #ddd;
 	border-bottom: solid thin #ddd;
-	padding: 10px 20px 10px 10px;
+	padding: 20px 5px;
 }
 
 .stationtable td {
 	border-left: solid thin #ddd;
 	border-right: solid thin #ddd;
-	padding: 10px;
+	padding: 20px 5px;
 	vertical-align: top;
 }
 
