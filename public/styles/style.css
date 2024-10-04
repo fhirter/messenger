@@ -61,14 +61,12 @@ a:hover {
 	padding: 10px 20px 10px 10px;
 }
 
-
 .stationtable td {
 	border-left: solid thin #ddd;
 	border-right: solid thin #ddd;
 	padding: 10px;
 	vertical-align: top;
 }
-
 
 .stationtable tbody tr:nth-child(odd){
 	background: rgba(0,0,0,0.05);
@@ -109,8 +107,6 @@ a:hover {
 	right: 10px;
 	width: 50px;
 	height: 50px;
-	/*background-color: black;*/
-	background-image: url("../images/conf.png");
 	background-repeat: no-repeat;
 	background-size: contain;
 	cursor: pointer;
@@ -139,7 +135,6 @@ a:hover {
 	left: 200px;
 	display: none;
 	height: 50px;
-	background-image: url("../images/alert.png");
 	background-repeat: no-repeat;
 }
 
