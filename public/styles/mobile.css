@@ -13,6 +13,8 @@
         padding: 20px 5px;
     }
 
+    .stationtable th {
+        padding: 20px 5px;
     }
 
     .type, .passlist, .lock {
@@ -20,7 +22,7 @@
     }
 
     #config {
-        padding: 0px;
+        padding: 0;
     }
 
     #config fieldset {
@@ -28,7 +30,7 @@
     }
 
     #config label {
-        margin: 0px;
+        margin: 0;
         width: 100%;
         height: 50px;
         line-height: 50px;
