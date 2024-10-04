@@ -21,7 +21,6 @@ a:hover {
 	font-style: italic;
 }
 
-
 .type {
 	width: 5em;
 }
@@ -40,7 +39,6 @@ a:hover {
 }
 
 .passlist {
-	/*width: calc( 100% - (2em + 5em + 2*8em + 2*4em ));*/
 	width: 30em;
 }
 
