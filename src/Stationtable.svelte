@@ -114,8 +114,8 @@
                 <th id="type" class="type">Zug</th>
                 <th id="from">Von</th>
                 <th id="fromPasslist" class="passlist">Stationen</th>
-                <th id="arrivalTime">Ankunftszeit</th>
-                <th id="departureTime">Abfahrtszeit</th>
+                <th id="arrivalTime" class="arrival_time">Ankunftszeit</th>
+                <th id="departureTime" class="departure_time">Abfahrtszeit</th>
                 <th id="toPasslist" class="passlist">Stationen</th>
                 <th id="to">Nach</th>
             </tr>
