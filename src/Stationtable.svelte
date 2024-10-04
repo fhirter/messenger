@@ -167,5 +167,5 @@
             </tbody>
         </table>
     </form>
-    <p id="version">fabianhirter.ch/messenger v0.5</p>
+    <p id="version">fabianhirter.ch/messenger v0.5.1</p>
 </main>
