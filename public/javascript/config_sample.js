@@ -1,5 +1,10 @@
 "use strict";
 
-// paste api key here and rename file to config.js
-let apiKey = "";
-let mikuLink = "";
+const config = {
+    "MIKU_LINK": "",
+    "API_KEY": "",
+    "refreshRate": 1,
+    "transportations": ['international', 'regionalRail', 'interregionalRail'], // one of: ['international', 'regionalRail', 'interregionalRail']
+    "station": "8507000",
+    "limit": 40,
+}
