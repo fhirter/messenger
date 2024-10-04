@@ -30,13 +30,10 @@ a:hover {
 	width: 2em;
 }
 
-.arrival_time {
-	font-weight: bold;
-	text-align: left;
-    width: 4em;
-}
 
-.departure_time {
+.arrival_time, .departure_time {
+	padding: 0;
+	background-color: gray;
 	font-weight: bold;
 	text-align: left;
     width: 4em;
