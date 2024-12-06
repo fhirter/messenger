@@ -1,4 +1,4 @@
-var train = {
+const train = {
 	platform: "",					// Gleis-Nr
 	changedPlatform: false,			// true wenn Gleisänderung, boolean
 	arrivalTime: {},				// Fahrplanmässige Ankunftszeit, Date
