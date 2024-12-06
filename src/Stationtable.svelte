@@ -3,6 +3,7 @@
 
     export let config;
     export let data;
+    export let requestParser;
 
     load();
 

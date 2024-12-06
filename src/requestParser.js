@@ -1,4 +1,4 @@
-const requestParser = {
+export const requestParser = {
     prefix: "trias:",
 
     /**
