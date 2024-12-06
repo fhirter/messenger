@@ -2,6 +2,7 @@
     export let trains = [];
 
     export let config;
+    export let data;
 
     load();
 

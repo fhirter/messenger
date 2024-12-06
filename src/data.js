@@ -1,6 +1,6 @@
 "use strict";
 
-let data = {
+export const data = {
 	config: {},
 
     url: "https://api.opentransportdata.swiss/trias2020",
