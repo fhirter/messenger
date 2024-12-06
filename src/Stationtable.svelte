@@ -1,6 +1,8 @@
 <script>
     export let trains = [];
 
+    export let config;
+
     load();
 
     if(config.MIKU_LINK.length === 0) {
