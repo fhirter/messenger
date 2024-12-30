@@ -12,6 +12,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+/docs/filtered_logs.txt
 
 node_modules
 dist
@@ -24,3 +25,4 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
