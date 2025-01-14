@@ -77,21 +77,19 @@
             return undefined;
         }
 
-        let journeyNumber = '';
-        let journey = train.journeyRef.split(":");
-        journeyNumber = journey.pop();
+        const journey = train.journeyRef.split(":");
+        const journeyNumber = journey.pop();
 
-        if (journeyNumber !== '') {
-            let infoUrl = config.MIKU_LINK + "/#/fahrten/direkt/" +journeyNumber;
-            return infoUrl;
-            let lineLink = document.createElement('a');
+        if (journeyNumber === '') return undefined
 
-            lineLink.setAttribute('href', infoUrl);
-            lineLink.setAttribute('target', "_blank");
-            lineLink.innerHTML = train.lineName;
-        } else {
-            return undefined;
-        }
+        const infoUrl = config.MIKU_LINK + "/#/fahrten/direkt/" +journeyNumber;
+        const lineLink = document.createElement('a');
+
+        lineLink.setAttribute('href', infoUrl);
+        lineLink.setAttribute('target', "_blank");
+        lineLink.innerHTML = train.lineName;
+
+        return infoUrl;
     }
 
 </script>
