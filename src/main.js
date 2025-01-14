@@ -1,10 +1,12 @@
-import App from './Stationtable.svelte';
+import Stationtable from './Stationtable.svelte';
 
 import {config} from './config.js';
-import {data} from './data.js';
+import {Data} from './data.js';
 import {requestParser} from "./requestParser.js";
 
-const app = new App({
+const data = new Data(config, requestParser);
+
+const app = new Stationtable({
 	target: document.body,
 	props: {
 		config,
