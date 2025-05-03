@@ -8,15 +8,15 @@ export const requestParser = {
      */
     parse: function (rawData) {
         let parser = new DOMParser();
-        let data = parser.parseFromString(rawData,  "text/xml");
+        let data = parser.parseFromString(rawData, "text/xml");
 
         let trains = [];
 
-        let stopEventResults= data.getElementsByTagName(this.prefix + "StopEventResult");
-        for(let i=0;i<stopEventResults.length;i++) {
+        let stopEventResults = data.getElementsByTagName(this.prefix + "StopEventResult");
+        for (let i = 0; i < stopEventResults.length; i++) {
             let train = {};
             this.parseService(stopEventResults[i].getElementsByTagName(this.prefix + "Service")[0], train);
-            this.parseThisCall(stopEventResults[i].getElementsByTagName(this.prefix + "ThisCall")[0],train);		// current stop
+            this.parseThisCall(stopEventResults[i].getElementsByTagName(this.prefix + "ThisCall")[0], train);		// current stop
             train.fromPasslist = this.parsePasslist(stopEventResults[i].getElementsByTagName(this.prefix + "PreviousCall"));	// from passlist (PreviousCall)
             train.toPasslist = this.parsePasslist(stopEventResults[i].getElementsByTagName(this.prefix + "OnwardCall"));		// to passlist (OnwardCall)
 
@@ -45,20 +45,20 @@ export const requestParser = {
         train.to = service.getElementsByTagName(this.prefix + "DestinationText")[0].firstChild.textContent;
 
         let cancelled = service.getElementsByTagName(this.prefix + "Cancelled")[0];
-        if(cancelled !== undefined) {
-            if(cancelled.textContent === "true") {
+        if (cancelled !== undefined) {
+            if (cancelled.textContent === "true") {
                 train.cancelled = true;
-                console.log("parseService: ", train.from, train.to,"cancelled");
+                console.log("parseService: ", train.from, train.to, "cancelled");
             } else {
                 train.cancelled = false; // debug
             }
         }
 
         let unplanned = service.getElementsByTagName(this.prefix + "Unplanned")[0];
-        if(unplanned !== undefined) {
+        if (unplanned !== undefined) {
             if (unplanned.textContent === "true") {
                 train.unplanned = true;
-                console.log("parseService:",train.from, train.to,"unplanned");
+                console.log("parseService:", train.from, train.to, "unplanned");
             } else {
                 train.unplanned = false;
             }
@@ -73,7 +73,7 @@ export const requestParser = {
      */
     parseThisCall: function (thisCall, train) {
         let serviceArrival, serviceDeparture;
-        let plannedBay,estimatedBay, estimatedTime;
+        let plannedBay, estimatedBay, estimatedTime;
 
         plannedBay = thisCall.getElementsByTagName(this.prefix + "PlannedBay")[0];
         if (plannedBay !== undefined) {
@@ -92,22 +92,21 @@ export const requestParser = {
         serviceDeparture = thisCall.getElementsByTagName(this.prefix + "ServiceDeparture")[0];
 
 
-        if(serviceArrival !== undefined) {
+        if (serviceArrival !== undefined) {
             train.arrivalTime = new Date(serviceArrival.getElementsByTagName(this.prefix + "TimetabledTime")[0].textContent);
-            estimatedTime =  serviceArrival.getElementsByTagName(this.prefix + "EstimatedTime")[0];
+            estimatedTime = serviceArrival.getElementsByTagName(this.prefix + "EstimatedTime")[0];
             if (estimatedTime !== undefined) {
                 train.estimatedArrivalTime = new Date(estimatedTime.textContent);
             }
         }
 
-        if(serviceDeparture !== undefined) {
+        if (serviceDeparture !== undefined) {
             train.departureTime = new Date(serviceDeparture.getElementsByTagName(this.prefix + "TimetabledTime")[0].textContent);
             estimatedTime = serviceDeparture.getElementsByTagName(this.prefix + "EstimatedTime")[0];
             if (estimatedTime !== undefined) {
                 train.estimatedDepartureTime = new Date(estimatedTime.textContent);
             }
         }
-
 
 
     },
@@ -122,7 +121,7 @@ export const requestParser = {
     parsePasslist: function (passlist) {
         let passlistFormat = [];
 
-        for(let i=0;i<passlist.length;i++) {
+        for (let i = 0; i < passlist.length; i++) {
             passlistFormat.push(passlist[i].getElementsByTagName(this.prefix + "StopPointName")[0].firstChild.textContent);
         }
         return passlistFormat;
