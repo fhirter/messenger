@@ -1,5 +1,5 @@
 export const requestParser = {
-    prefix: "trias:",
+    prefix: "siri:",
 
     /**
      * Parse API Data from XML to train object array trains
