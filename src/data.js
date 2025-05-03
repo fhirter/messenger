@@ -1,6 +1,6 @@
 "use strict";
 
-export const Data = function (config, requestParser) {
+export function Data(config, requestParser) {
     const url = "https://api.opentransportdata.swiss/ojp20";
     let requestString = `<?xml version="1.0" encoding="UTF-8"?>
 						<OJP xmlns="http://www.vdv.de/ojp" xmlns:siri="http://www.siri.org.uk/siri" version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.vdv.de/ojp ../../../../OJP4/OJP.xsd">
@@ -49,8 +49,7 @@ export const Data = function (config, requestParser) {
             body: requestBody,
         });
 
-        const data = await response.text()
-        return requestParser.parse(data);
+        return await response.text()
     }
 
     function generateRequest(type) {
@@ -288,13 +287,18 @@ export const Data = function (config, requestParser) {
         }
 
         console.log('loading')
-        const arrivalsPromise = fetchApi("arrival");
-        const departurePromise = fetchApi("departure");
 
-        const results = await Promise.allSettled([arrivalsPromise, departurePromise]);  // synchronize
+        const arrivalsPromise =  fetchApi("arrival");
+        const departuresPromise = fetchApi("departure");
+
+        const results = await Promise.allSettled([arrivalsPromise, departuresPromise]);  // synchronize
 
         console.log(results)
-        let trains = merge(results[0].value, results[1].value);
+
+        const arrivals = requestParser.parse(results[0].value);
+        const departures = requestParser.parse(results[2].value);
+
+        let trains = merge(arrivals, departures);
 
         trains = trains.filter(isDepartureInThePast);       // filter out trains which left the station
         trains = trains.filter(checkType.bind(this));     // filter by train types
