@@ -7,18 +7,18 @@ export const requestParser = {
      *
      */
     parse: function (rawData) {
-        let parser = new DOMParser();
-        let data = parser.parseFromString(rawData, "text/xml");
+        const parser = new DOMParser();
+        const data = parser.parseFromString(rawData, "text/xml");
 
-        let trains = [];
+        const trains = [];
 
-        let stopEventResults = data.getElementsByTagName(this.prefix + "StopEventResult");
+        const stopEventResults = data.getElementsByTagName("StopEventResult");
         for (let i = 0; i < stopEventResults.length; i++) {
-            let train = {};
-            this.parseService(stopEventResults[i].getElementsByTagName(this.prefix + "Service")[0], train);
-            this.parseThisCall(stopEventResults[i].getElementsByTagName(this.prefix + "ThisCall")[0], train);		// current stop
-            train.fromPasslist = this.parsePasslist(stopEventResults[i].getElementsByTagName(this.prefix + "PreviousCall"));	// from passlist (PreviousCall)
-            train.toPasslist = this.parsePasslist(stopEventResults[i].getElementsByTagName(this.prefix + "OnwardCall"));		// to passlist (OnwardCall)
+            const train = {};
+            this.parseService(stopEventResults[i].getElementsByTagName("Service")[0], train);
+            this.parseThisCall(stopEventResults[i].getElementsByTagName("ThisCall")[0], train);		// current stop
+            train.fromPasslist = this.parsePasslist(stopEventResults[i].getElementsByTagName("PreviousCall"));	// from passlist (PreviousCall)
+            train.toPasslist = this.parsePasslist(stopEventResults[i].getElementsByTagName("OnwardCall"));		// to passlist (OnwardCall)
 
             trains.push(train);
         }
