@@ -1,9 +1,8 @@
 export const requestParser = {
-    prefix: "siri:",
+    prefix: "siri",
 
     /**
      * Parse API Data from XML to train object array trains
-     *
      *
      */
     parse: function (rawData) {
@@ -34,34 +33,28 @@ export const requestParser = {
      * @param train - train object to be populated
      */
     parseService: function (service, train) {
-        train.lineRef = service.getElementsByTagName(this.prefix + "LineRef")[0].textContent;
-        train.journeyRef = service.getElementsByTagName(this.prefix + "JourneyRef")[0].textContent;
+        train.lineRef = service.getElementsByTagName(`${this.prefix}:LineRef`)[0].textContent;
+        train.journeyRef = service.getElementsByTagName(`JourneyRef`)[0].textContent;
 
-        train.lineName = service.getElementsByTagName(this.prefix + "PublishedLineName")[0].firstChild.textContent;
-        let mode = service.getElementsByTagName(this.prefix + "Mode")[0];
-        train.type = mode.getElementsByTagName(this.prefix + "RailSubmode")[0].textContent;
+        train.lineName = service.getElementsByTagName(`PublishedServiceName`)[0].firstChild.textContent;
+        const mode = service.getElementsByTagName(`Mode`)[0];
+        train.type = mode.getElementsByTagName(`${this.prefix}:RailSubmode`)[0].textContent;
 
-        train.from = service.getElementsByTagName(this.prefix + "OriginText")[0].firstChild.textContent;
-        train.to = service.getElementsByTagName(this.prefix + "DestinationText")[0].firstChild.textContent;
+        train.from = service.getElementsByTagName(`OriginText`)[0].firstChild.textContent;
+        train.to = service.getElementsByTagName(`DestinationText`)[0].firstChild.textContent;
 
-        let cancelled = service.getElementsByTagName(this.prefix + "Cancelled")[0];
-        if (cancelled !== undefined) {
-            if (cancelled.textContent === "true") {
-                train.cancelled = true;
-                console.log("parseService: ", train.from, train.to, "cancelled");
-            } else {
-                train.cancelled = false; // debug
-            }
+        const cancelled = service.getElementsByTagName(`Cancelled`)[0];
+        train.cancelled = false;
+        if (cancelled !== undefined && cancelled?.textContent === "true") {
+            train.cancelled = true;
+            console.log("parseService: ", train.from, train.to, "cancelled");
         }
 
-        let unplanned = service.getElementsByTagName(this.prefix + "Unplanned")[0];
-        if (unplanned !== undefined) {
-            if (unplanned.textContent === "true") {
-                train.unplanned = true;
-                console.log("parseService:", train.from, train.to, "unplanned");
-            } else {
-                train.unplanned = false;
-            }
+        const unplanned = service.getElementsByTagName(`Unplanned`)[0];
+        train.unplanned = false;
+        if (unplanned !== undefined && unplanned?.textContent === "true") {
+            train.unplanned = true;
+            console.log("parseService:", train.from, train.to, "unplanned");
         }
     },
 
