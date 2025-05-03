@@ -69,7 +69,7 @@ export const Data = function (config, requestParser) {
     // set time of request to now()
     function getLocalIsoTime() {
         const timezoneOffset = (new Date()).getTimezoneOffset() * 60000; // timezone offset in milliseconds
-        return (new Date(Date.now() - timezoneOffset)).toISOString().substr(0, 19);
+        return (new Date(Date.now() - timezoneOffset)).toISOString().substring(0, 19);
     }
 
 
