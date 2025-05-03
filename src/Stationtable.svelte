@@ -1,9 +1,7 @@
 <script>
-    export let trains = [];
+    const {config, data, requestParser} = $props();
 
-    export let config;
-    export let data;
-    export let requestParser;
+    let trains = $state();
 
     load();
 
