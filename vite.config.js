@@ -14,4 +14,10 @@ export default defineConfig({
       toplevel: false,
     }
   },
+  test: {
+    globals: true,               // Allows usage of global test APIs
+    environment: 'jsdom',        // Use jsdom for browser-like testing
+    css: true,                   // Enable CSS support for tests
+  },
+
 })
