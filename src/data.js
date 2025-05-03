@@ -279,7 +279,7 @@ export const Data = function (config, requestParser) {
 
     /**
      * Generate request and load data from api
-     * Arrival and departure data gets loaded simultaniously, when both has been loaded parse() gets called
+     * Arrival and departure data gets loaded simultaneously, when both has been loaded parse() gets called
      *
      */
     async function load() {
