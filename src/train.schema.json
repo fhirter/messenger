@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Train",
+  "type": "object",
+  "properties": {
+    "platform": {
+      "type": "string",
+      "description": "Gleis-Nr"
+    },
+    "changedPlatform": {
+      "type": "boolean",
+      "description": "True if platform changed"
+    },
+    "arrivalTime": {
+      "type": "object",
+      "description": "Scheduled arrival time"
+    },
+    "departureTime": {
+      "type": "object",
+      "description": "Scheduled departure time"
+    },
+    "estimatedArrivalTime": {
+      "type": "string",
+      "description": "Expected arrival time"
+    },
+    "estimatedDepartureTime": {
+      "type": "string",
+      "description": "Expected departure time"
+    },
+    "lineRef": {
+      "type": "string",
+      "description": "Line ID (https://opentransportdata.swiss/de/cookbook/service-vdv-431/)"
+    },
+    "journeyRef": {
+      "type": "string",
+      "description": "Journey reference"
+    },
+    "type": {
+      "type": "string",
+      "description": "Line type (Intercity, RegioExpress, InterRegio, S-Bahn, EC, ICE)"
+    },
+    "from": {
+      "type": "string",
+      "description": "Source location"
+    },
+    "to": {
+      "type": "string",
+      "description": "Destination"
+    },
+    "fromPasslist": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Source passlist (array of strings)"
+    },
+    "toPasslist": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Destination passlist (array of strings)"
+    },
+    "cancelled": {
+      "type": "boolean",
+      "description": "True if train is cancelled"
+    },
+    "unplanned": {
+      "type": "boolean",
+      "description": "True if train schedule is unplanned"
+    },
+    "lock": {
+      "type": "boolean",
+      "description": "True if locked"
+    }
+  },
+  "required": [
+    "platform",
+    "changedPlatform",
+    "arrivalTime",
+    "departureTime",
+    "estimatedArrivalTime",
+    "estimatedDepartureTime",
+    "lineRef",
+    "journeyRef",
+    "type",
+    "from",
+    "to",
+    "fromPasslist",
+    "toPasslist",
+    "cancelled",
+    "unplanned",
+    "lock"
+  ]
+}
