@@ -238,7 +238,7 @@ export function Data(config, requestParser) {
         console.log(results)
 
         const arrivals = requestParser.parse(results[0].value);
-        const departures = requestParser.parse(results[2].value);
+        const departures = requestParser.parse(results[1].value);
 
         let trains = merge(arrivals, departures);
 
