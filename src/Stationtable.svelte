@@ -82,14 +82,7 @@
 
         if (journeyNumber === '') return undefined
 
-        const infoUrl = config.MIKU_LINK + "/#/fahrten/direkt/" +journeyNumber;
-        const lineLink = document.createElement('a');
-
-        lineLink.setAttribute('href', infoUrl);
-        lineLink.setAttribute('target', "_blank");
-        lineLink.innerHTML = train.lineName;
-
-        return infoUrl;
+        return `${config.MIKU_LINK}/#/fahrten/direkt/${journeyNumber}`;
     }
 
 </script>
