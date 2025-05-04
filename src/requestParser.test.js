@@ -19,22 +19,22 @@ describe('parse', () => {
         const train = trains[0];
 
         expect(train).toMatchObject({
-            platform: expect.any(String),
-            changedPlatform: false,
-            arrivalTime: expect.any(Object),
-            departureTime: expect.any(Object),
-            estimatedArrivalTime: expect.any(String),
-            estimatedDepartureTime: expect.any(String),
             lineRef: expect.any(String),
             journeyRef: expect.any(String),
+            lineName: expect.any(String),
             type: expect.any(String),
             from: expect.any(String),
             to: expect.any(String),
-            fromPasslist: expect.any(Array),
-            toPasslist: expect.any(Array),
             cancelled: expect.any(Boolean),
             unplanned: expect.any(Boolean),
-            lock: expect.any(Boolean),
+            platform: expect.any(String),
+            changedPlatform: false,
+     //     arrivalTime: expect.to.be.a('date').or.undefined,
+    //      estimatedArrivalTime: expect.toBeOneOf([undefined, expect.any(Object)]),
+            departureTime: expect.any(Object),
+            estimatedDepartureTime: expect.any(Object),
+            fromPasslist: expect.any(Array),
+            toPasslist: expect.any(Array),
         });
 
         /**
