@@ -71,43 +71,38 @@ export const requestParser = {
      * @param train - train object to be populated
      */
     parseThisCall: function (thisCall, train) {
-        let serviceArrival, serviceDeparture;
-        let plannedBay, estimatedBay, estimatedTime;
-
-        plannedBay = thisCall.getElementsByTagName(this.prefix + "PlannedBay")[0];
-        if (plannedBay !== undefined) {
-            train.platform = plannedBay.getElementsByTagName(this.prefix + "Text")[0].textContent;
+        const plannedQuay = thisCall.getElementsByTagName("PlannedQuay")[0];
+        if (plannedQuay !== undefined) {
+            train.platform = getText(plannedQuay);
         } else {
             delete train.platform;
         }
 
-        estimatedBay = thisCall.getElementsByTagName(this.prefix + "EstimatedBay")[0];
+
+        const estimatedBay = thisCall.getElementsByTagName("EstimatedQuay")[0];
         if (estimatedBay !== undefined) {
-            train.platform = estimatedBay.getElementsByTagName(this.prefix + "Text")[0].textContent;
+            train.platform = getText(estimatedBay);
             train.changedPlatform = true;
         }
 
-        serviceArrival = thisCall.getElementsByTagName(this.prefix + "ServiceArrival")[0];
-        serviceDeparture = thisCall.getElementsByTagName(this.prefix + "ServiceDeparture")[0];
-
+        const serviceArrival = thisCall.getElementsByTagName("ServiceArrival")[0];
+        const serviceDeparture = thisCall.getElementsByTagName("ServiceDeparture")[0];
 
         if (serviceArrival !== undefined) {
-            train.arrivalTime = new Date(serviceArrival.getElementsByTagName(this.prefix + "TimetabledTime")[0].textContent);
-            estimatedTime = serviceArrival.getElementsByTagName(this.prefix + "EstimatedTime")[0];
+            train.arrivalTime = new Date(serviceArrival.getElementsByTagName("TimetabledTime")[0].textContent);
+            const estimatedTime = serviceArrival.getElementsByTagName("EstimatedTime")[0];
             if (estimatedTime !== undefined) {
                 train.estimatedArrivalTime = new Date(estimatedTime.textContent);
             }
         }
 
         if (serviceDeparture !== undefined) {
-            train.departureTime = new Date(serviceDeparture.getElementsByTagName(this.prefix + "TimetabledTime")[0].textContent);
-            estimatedTime = serviceDeparture.getElementsByTagName(this.prefix + "EstimatedTime")[0];
+            train.departureTime = new Date(serviceDeparture.getElementsByTagName("TimetabledTime")[0].textContent);
+            const estimatedTime = serviceDeparture.getElementsByTagName("EstimatedTime")[0];
             if (estimatedTime !== undefined) {
                 train.estimatedDepartureTime = new Date(estimatedTime.textContent);
             }
         }
-
-
     },
 
     /**
@@ -118,10 +113,10 @@ export const requestParser = {
      * @returns {Array} - String array of stops
      */
     parsePasslist: function (passlist) {
-        let passlistFormat = [];
+        const passlistFormat = [];
 
         for (let i = 0; i < passlist.length; i++) {
-            passlistFormat.push(passlist[i].getElementsByTagName(this.prefix + "StopPointName")[0].firstChild.textContent);
+            passlistFormat.push(getText(passlist[i].getElementsByTagName("StopPointName")[0]));
         }
         return passlistFormat;
     },
