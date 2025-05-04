@@ -78,8 +78,8 @@ export const requestParser = {
             delete train.platform;
         }
 
-
         const estimatedBay = thisCall.getElementsByTagName("EstimatedQuay")[0];
+        train.changedPlatform = false;
         if (estimatedBay !== undefined) {
             train.platform = getText(estimatedBay);
             train.changedPlatform = true;
