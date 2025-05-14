@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "./build.sh",
     "preview": "vite preview",
     "lint": "biome lint ./src"
   },

@@ -1,6 +1,6 @@
 "use strict";
 
-const config = {
+export const config = {
     "MIKU_LINK": "",
     "API_KEY": "",
     "refreshRate": 1,
