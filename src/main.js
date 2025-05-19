@@ -10,17 +10,17 @@ const data = new Data(config, requestParser);
 fetch("/key")
     .then(res => res.text())
     .then(key => {
-		console.log(key)
+        if (typeof key === "string") {
+            config.API_KEY = key;
+        }
+
+        mount(Stationtable, {
+            target: document.body,
+            props: {
+                config,
+                data,
+                requestParser
+            }
+        })
     });
 
-const API_KEY = location.pathname.slice(1);
-config.API_KEY = API_KEY;
-
-mount(Stationtable, {
-    target: document.body,
-    props: {
-        config,
-        data,
-        requestParser
-    }
-})

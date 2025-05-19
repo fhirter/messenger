@@ -1,3 +1,4 @@
 export function onRequest(context) {
-    return new Response("Hello, world!");
+    const apiKey = context.env.API_KEY;
+    return new Response(apiKey);
 }
