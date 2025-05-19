@@ -45,7 +45,7 @@ export function Data(config, requestParser) {
             mergedTrains = insertOrUpdate(departureTrain, mergedTrains)
         });
 
-        console.log("arrival: " + arrivalTrains.length, "departure: " + departureTrains.length, "merged: " + mergedTrains.length)
+       // console.log("arrival: " + arrivalTrains.length, "departure: " + departureTrains.length, "merged: " + mergedTrains.length)
 
         return mergedTrains;
     }
@@ -185,11 +185,9 @@ export function Data(config, requestParser) {
      */
     async function load() {
         if (config.API_KEY.length === 0) {
-            console.log("No API Key specified!");
+            console.error("No API Key specified!");
             return false;
         }
-
-        console.log('loading')
 
         const apiRepository = new OjpApiRepository({
             apiKey: config.API_KEY,
@@ -203,8 +201,6 @@ export function Data(config, requestParser) {
         const departuresPromise = apiRepository.get("departure");
 
         const results = await Promise.allSettled([arrivalsPromise, departuresPromise]);  // synchronize
-
-        console.log(results)
 
         const arrivals = requestParser.parse(results[0].value);
         const departures = requestParser.parse(results[1].value);
