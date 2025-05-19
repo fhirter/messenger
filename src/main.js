@@ -7,19 +7,20 @@ import {mount} from "svelte";
 
 const data = new Data(config, requestParser);
 
-const key = await fetch("/key");
-
-console.log(key)
-
+fetch("/key")
+    .then(res => res.text())
+    .then(key => {
+		console.log(key)
+    });
 
 const API_KEY = location.pathname.slice(1);
 config.API_KEY = API_KEY;
 
 mount(Stationtable, {
-	target: document.body,
-	props: {
-		config,
-		data,
-		requestParser
-	}
+    target: document.body,
+    props: {
+        config,
+        data,
+        requestParser
+    }
 })
