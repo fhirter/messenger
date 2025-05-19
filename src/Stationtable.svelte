@@ -84,26 +84,25 @@
     <form>
         <table id="arrivals" class="stationtable">
             <colgroup class="arrival">
-                <col />
-                <col />
-                <col />
-                <col />
-                <col />
+                <col class="platform" />
+                <col class="type" />
+                <col class="from" />
+                <col class="passlist"/>
+                <col class="arrival_time"/>
             </colgroup>
             <colgroup>
-                <col />
-                <col />
-                <col />
-                <col />
+                <col class="departure_time"/>
+                <col class="passlist"/>
+                <col class="to"/>
             </colgroup>
             <thead>
             <tr>
-                <th>#</th>
+                <th >#</th>
                 <th id="type" class="type">Zug</th>
                 <th id="from">Von</th>
                 <th id="fromPasslist" class="passlist">Stationen</th>
-                <th id="arrivalTime" class="arrival_time">Ankunft</th>
-                <th id="departureTime" class="departure_time">Abfahrt</th>
+                <th id="arrivalTime">An</th>
+                <th id="departureTime" >Ab</th>
                 <th id="toPasslist" class="passlist">Stationen</th>
                 <th id="to">Nach</th>
             </tr>
