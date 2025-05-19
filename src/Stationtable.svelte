@@ -158,5 +158,5 @@
             </tbody>
         </table>
     </form>
-    <p id="version">fabianhirter.ch/messenger v0.5.1</p>
+    <p id="version">solari.hirschengraben.net v0.6.0</p>
 </main>
