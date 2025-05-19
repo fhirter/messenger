@@ -38,16 +38,11 @@
     }
 
     function getDelay(estimatedTime, scheduledTime) {
-        let delay;
         if (estimatedTime !== undefined && scheduledTime !== undefined) {
-            delay = estimatedTime - scheduledTime;
-            if(delay === 0) {				// ignore delays <60s
-                return false;
-            }
-            return delay;
-        } else {
-            return false;
+            const delayMs = estimatedTime - scheduledTime;
+            return Math.floor(delayMs / 60000);
         }
+        return 0;
     }
 
     function parsePasslist(passlist) {
@@ -136,13 +131,16 @@
                             {parsePasslist(train.fromPasslist)}
                         </td>
                         <td class="arrival_time"
-                            class:delay="{getDelay(train.estimatedArrivalTime, train.arrivalTime)>0}">
+                            class:delay="{getDelay(train.estimatedArrivalTime, train.arrivalTime) !== 0}">
                             {formatTime(train.arrivalTime)}
                         </td>
                         <td class="departure_time departure"
-                            class:delay="{getDelay(train.estimatedDepartureTime, train.departureTime)>0}"
+                            class:delay="{getDelay(train.estimatedDepartureTime, train.departureTime) !== 0}"
                             class:cancelled="{train.departureCancelled}">
                             {formatTime(train.departureTime)}
+                            {#if getDelay(train.estimatedDepartureTime, train.departureTime) !== 0}
+                                +{getDelay(train.estimatedDepartureTime, train.departureTime)}
+                            {/if}
                         </td>
                         <td class="passlist departure"
                             class:cancelled="{train.departureCancelled}">
