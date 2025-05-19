@@ -5,8 +5,9 @@
 
     load();
 
-    if(config.MIKU_LINK.length === 0) {
+    if(typeof config.MIKU_LINK === 'undefined' || config.MIKU_LINK.length === 0) {
         console.log("No Miku URL specified!");
+        config.MIKU_LINK = "";  // set default
     }
 
     setInterval(() => {
