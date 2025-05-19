@@ -7,6 +7,11 @@ import {mount} from "svelte";
 
 const data = new Data(config, requestParser);
 
+const key = await fetch("/key");
+
+console.log(key)
+
+
 const API_KEY = location.pathname.slice(1);
 config.API_KEY = API_KEY;
 
