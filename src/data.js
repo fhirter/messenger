@@ -2,8 +2,9 @@
 
 import {OjpApiRepository} from "./OjpApiRepository.js";
 
-export function Data(config, requestParser) {
+export function Data(apiRepository, requestParser) {
     let trains;
+    let config;
 
     /**
      *
@@ -184,17 +185,6 @@ export function Data(config, requestParser) {
      *
      */
     async function load() {
-        if (config.API_KEY.length === 0) {
-            console.error("No API Key specified!");
-            return false;
-        }
-
-        const apiRepository = new OjpApiRepository({
-            apiKey: config.API_KEY,
-            limit: config.limit,
-            station: config.station,
-        });
-
         const arrivalsPromise =  apiRepository.get({
             type: "arrival",
         });
