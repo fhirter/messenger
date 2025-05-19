@@ -1,8 +1,16 @@
+:root {
+	--background-color1: hsl(0deg 0% 10%);
+	--background-color2: hsl(0deg 0% 15%);
+	--border-color: hsl(0deg 0% 30%);
+}
+
 body {
-	font-family: sans-serif;
-    padding: 0;
+	font-family: 'Courier New', monospace;
+	font-size: 1.2em;
+	color: white;
+	padding: 0;
     margin: 0;
-	background-color: lightgray;
+	background-color: var(--background-color1);
 }
 
 a:hover {
@@ -47,49 +55,34 @@ a:hover {
 }
 
 .stationtable {
-	border-radius: 5px;
 	border-collapse: collapse;
-	background-color: hsl(0deg 0% 95%);
 	width: calc(100vw - 20px);
-	border: solid thin #dddddd;
+	border: solid thin var(--border-color);
 	margin: 10px;
 }
 
 .stationtable th {
 	text-align: left;
-	border-left: solid thin #ddd;
-	border-right: solid thin #ddd;
-	border-bottom: solid thin #ddd;
+	border-left: solid thin var(--border-color);
+	border-right: solid thin var(--border-color);
+	border-bottom: solid thin var(--border-color);
 	padding: 20px 5px;
 }
 
 .stationtable td {
-	border-left: solid thin #ddd;
-	border-right: solid thin #ddd;
+	border-left: solid thin var(--border-color);
+	border-right: solid thin var(--border-color);
 	padding: 20px 5px;
 	vertical-align: top;
 }
 
 .stationtable tbody tr:nth-child(odd){
-	background: rgba(0,0,0,0.05);
-}
-
-
-.stationtable tbody tr:nth-child(odd) .departure {
-	background: rgba(247, 254, 46, 1);
-
-}
-
-.stationtable tbody tr:nth-child(even) .departure {
-	background: rgba(247, 254, 46, 0.5);
+	background: var(--background-color2);
 }
 
 .stationtable tbody tr:hover {
 	outline: 1px solid black;
 }
-
-
-
 
 .delay {
 	color: red;

@@ -1,4 +1,4 @@
-@media screen and (max-device-width: 480px) {
+@media screen and (max-device-width: 50rem) {
     body {
         font-size: 0.7em;
     }
@@ -9,7 +9,6 @@
     }
 
     .stationtable td {
-        border: solid thin #dddddd;
         padding: 20px 5px;
     }
 
