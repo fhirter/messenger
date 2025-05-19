@@ -137,37 +137,6 @@ export function Data(config, requestParser) {
     }
 
     /**
-     * Generate JSON Date from timestamp
-     *
-     * @param timestamp
-     * @returns {string} - JSON Datestring
-     */
-    function timestampToJson(timestamp) {
-        const date = new Date(timestamp);			// generate date from earlies arrival time
-        const offset = date.getTimezoneOffset() / 60;			// get current timezone offset
-
-        date.setHours(date.getHours() - offset);				// adjust date with offset
-
-        return date.toJSON();				// set query date to earliest arrival date
-    }
-
-
-    /**
-     * Display error message and symbol
-     *
-     * @param jqXHR
-     */
-    function errorHandling(jqXHR) {
-        const alert = document.getElementById("alert");
-        alert.style.visibility = "visible";
-
-        alert.getElementsByTagName("span")[0].text(jqXHR.statusText);
-
-        console.log("errorHandling: ", jqXHR.statusText);
-    }
-
-
-    /**
      *
      * Set property lock to true in train object in this.trains with corresponding journeyRef property
      *
