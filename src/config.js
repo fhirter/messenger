@@ -1,9 +1,7 @@
 "use strict";
 
 export const config = {
-    "MIKU_LINK": "",
-    "API_KEY": "",
-    "refreshRate": 1,
+    "refreshRate": 10,
     "transportations": ['international', 'regionalRail', 'interregionalRail'], // one of: ['international', 'regionalRail', 'interregionalRail']
     "station": "8507000",
     "limit": 40,
