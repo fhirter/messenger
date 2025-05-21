@@ -59,7 +59,7 @@ a:hover {
 .stationtable th, td {
 	border-left: solid thin var(--border-color);
 	border-right: solid thin var(--border-color);
-	padding: 20px 5px;
+	padding: 15px 5px;
 
 	white-space: wrap;
 }
