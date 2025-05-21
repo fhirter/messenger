@@ -8,14 +8,6 @@
         width: 100vw;
     }
 
-    .stationtable td {
-        padding: 20px 5px;
-    }
-
-    .stationtable th {
-        padding: 20px 5px;
-    }
-
     .type, .passlist, .lock {
         display: none;
     }
