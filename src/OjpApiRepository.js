@@ -16,6 +16,13 @@ export function OjpApiRepository({apiKey, station, limit}) {
 											<!-- <DepArrTime>2024-06-01T11:24:34.598Z</DepArrTime> -->
 										</Location>
 										<Params>
+                                            <PtModeFilter>
+                                                <Mode>
+                                                    <Exclude>true</Exclude>
+                                                    <PtMode>rail</PtMode>
+                                                    <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                                                </Mode>
+                                            </PtModeFilter>
 											<OperatorFilter>
 												<Exclude>false</Exclude>
 												<OperatorRef>11</OperatorRef>
