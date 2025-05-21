@@ -188,7 +188,9 @@ export function Data(apiRepository, requestParser) {
         const arrivalsPromise =  apiRepository.get({
             type: "arrival",
         });
-        const departuresPromise = apiRepository.get("departure");
+        const departuresPromise = apiRepository.get({
+            type: "departure",
+        });
 
         const results = await Promise.allSettled([arrivalsPromise, departuresPromise]);  // synchronize
 
