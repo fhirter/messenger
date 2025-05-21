@@ -61,7 +61,7 @@ export function OjpApiRepository({apiKey, station, limit}) {
         // build arrivals request
         const request = parser.parseFromString(requestString, "text/xml");
         request.getElementsByTagName("StopPlaceRef")[0].innerHTML = station;
-        // request.getElementsByTagName("StopEventType")[0].innerHTML = type;
+        request.getElementsByTagName("StopEventType")[0].innerHTML = type;
         request.getElementsByTagName("NumberOfResults")[0].innerHTML = limit;
 
         request.getElementsByTagName("siri:RequestTimestamp")[0].innerHTML = getLocalIsoTime();
