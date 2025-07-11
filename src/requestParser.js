@@ -38,13 +38,13 @@ export const requestParser = {
      * @param train - train object to be populated
      */
     parseService: function (service, train) {
-        train.lineRef = service.getElementsByTagName(`${this.prefix}:LineRef`)[0].textContent;
-        train.journeyRef = service.getElementsByTagName(`JourneyRef`)[0].textContent;
+        train.lineRef = service.getElementsByTagName(`${this.prefix}:LineRef`)[0]?.textContent;
+        train.journeyRef = service.getElementsByTagName(`JourneyRef`)[0]?.textContent;
 
         train.lineName = getText(service.getElementsByTagName(`PublishedServiceName`)[0]);
 
         const mode = service.getElementsByTagName(`Mode`)[0];
-        train.type = mode.getElementsByTagName(`${this.prefix}:RailSubmode`)[0].textContent;
+        train.type = mode.getElementsByTagName(`${this.prefix}:RailSubmode`)[0]?.textContent;
 
         train.from = getText(service.getElementsByTagName(`OriginText`)[0]);
         train.to = getText(service.getElementsByTagName(`DestinationText`)[0]);
